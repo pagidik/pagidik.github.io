@@ -1,0 +1,32 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+
+<div class="row py-4">
+    <div class="col-md-8 col-12">
+        <span style="font-size: 48px; color: white;"><strong>Blog Posts</strong></span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        {% for post in site.posts %}
+            <div class="row py-5 px-5">
+                <div class="col-md-4">
+                    <div class="align-text-bottom">
+                        <div class="pt-1">
+                            <a href="{{ post.url }}" style="font-size: 20px;">{{ post.title }}</a>
+                        </div>                    
+                        <div class="pb-1">
+                            <span>{{ post.date | date_to_string }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <img src="{{ post.img }}" class="float-right img-fluid" style="width: 70%;">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

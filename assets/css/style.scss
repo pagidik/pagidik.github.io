@@ -1,0 +1,49 @@
+a {
+    color: inherit;
+}
+
+span {
+    color: #d5d5d5;
+}
+
+.highlight-blue {
+    color: #007CED;
+}
+
+.btn-gray {
+    background-color: #333333;
+    color: white;
+    border-radius: 40px;
+    box-shadow: 0 10px 10px -8px black;
+    border-width: 2px;
+}
+
+.btn-blue-outline {
+    border-color: #007CED;
+}
+
+.btn-gray-outline {
+    border-color: gray;
+}
+
+.btn-blue-outline:hover {
+    background-color: #007CED;
+}
+
+.btn-gray-outline:hover {
+    background-color: gray;
+}
+
+.footer-class {
+    background: #252525;
+    border-top: 0.1rem solid #333;
+    color: #959595;
+}
+
+.img {
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
