@@ -7,10 +7,10 @@ categories: projects
 ---
 This projects contains 3D mapping using lightweight and ground-optimized lidar odometry and mapping (LeGO-LOAM) and Scan context LeGO-LOAM system. The system takes in point cloud from a Velodyne VLP-16 Lidar (placed horizontally) and optional IMU data as inputs. It outputs 6D pose estimation in real-time.
 ## The system
-![NUANCE](/assets/LEGOLOAM/nuance.jpg){: .img}
+![NUANCE](/assets/LEGOLOAM/nuance.jpg)
 LeGO-LOAM is specifically optimized for a horizontally placed VLP-16 on a ground vehicle. It assumes there is always a ground plane in the scan. The vehicle we are using is Northeastern's Autonomous Car NUANCE. It has a built-in IMU.
 Lidar odometry performs two-step Levenberg Marquardt optimization to get 6D transformation.
-![LIDAR ODOMETRY](/assets/LEGOLOAM/odometry.jpg){: .img}
+![LIDAR ODOMETRY](/assets/LEGOLOAM/odometry.jpg)
 
    
 ## References

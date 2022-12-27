@@ -3,7 +3,7 @@ layout: post
 title:  "Summer & Fall 2020 Internship @ Vecna Robotics"
 date:   2021-01-08 05:32:38 -0500
 img: /assets/vecna-robotics-internship/counterbalance-truck-sensors.jpeg
-categories: blog
+categories: projects
 ---
 <div class="row mb-4">
 <div class="col-12 text-center align-self-center mb-2">
