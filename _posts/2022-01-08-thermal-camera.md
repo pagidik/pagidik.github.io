@@ -3,7 +3,7 @@ layout: post
 title:  "Introduction to Thermal Cameras"
 date:   2022-01-08 05:32:38 -0500
 img: /assets/thermal-camera/thermal-image.jpeg
-categories: projects
+categories: blog
 ---
 The main purpose of this blog is to understand Thermal imaging systems and to understand what Thermal Cameras really measure? I start with some refresher of the Infrared Radiation, followed by a section on Thermal Cameras and conclude with Radiometry concepts.
 ## Infrared Radiation
