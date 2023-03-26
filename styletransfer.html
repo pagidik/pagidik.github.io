@@ -1,0 +1,204 @@
+
+<!DOCTYPE HTML>
+<!--
+    Massively by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>LEGO LOAM - Kishore's Portfolio</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            h1 {
+            font-size: 1rem;
+            }
+            h2 {
+            font-size: 1rem;
+            }
+            p {
+            font-size: 1rem;
+            line-height: 1.5;
+            }
+            .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+
+            .image-container a {
+            flex: 1;
+            margin: 0 10px;
+            }
+    </style>
+</head>
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+
+                <!-- Header -->
+                    <header id="header">
+                        <a href="index.html" class="logo">Portfolio</a>
+                    </header>
+
+                <!-- Nav -->
+                    <nav id="nav">
+                        <ul class="links">
+                            <li><a href="index.html">About</a></li>
+                            <li class="active"><a href="projects.html">Projects</a></li>
+                            <li><a href="/assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
+                        </ul>
+                        <ul class="icons">
+                            <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Main -->
+                    <div id="main">
+
+                        <!-- Post -->
+                            <section class="post">
+                                <header class="major">
+                                    <h1>Combining Style Transfer and Super Resolution for High-Resolution Image Generation</h1>
+                                </header>
+                                
+                                <!-- Text stuff -->
+                                    <h2 id="abstract">Abstract</h2>
+                                    <p>The aim of our project was to get a high resolution style transfer image. We did this by first building a style transfer network and then passing the resulting image into an SRGAN network to obtain a higher resolution image. As an additional component of the style transfer network, we modified it to allow style transfer from two images instead of one. The image obtained from a style transfer network, is usually a down sampled low resolution image, hence we thought it might be interesting to pass it through a Super Resolution network trained on natural images and observe the results obtained. In order to do this, we attempted to write our own super resolution model based on the SRGAN paper, but we faced multiple issues and logistical constraints with the same and did not have time to rectify them. Hence, we instead used an existing independent SRGAN model.</p>
+                                    <h2 id="introduction">Introduction and Prior Work</h2>
+                                    <p>A lot of Computer Vision projects, for entertainment or for real-life solutions, deal with image enhancement. One of the things we found interesting with image generator such as DALL-E and Stable Diffusion AI art generator, was their ability to render the generated image, which is high resolution, to different styles. So we attempted to achieve similar results by using a style transfer followed by a super resolution. 
+
+                                        We can break down the work done in this project into two parts: Style Transfer and Super Resolution. Style Transfer deals with understanding the style of one image and converting another image to the same style. For instance: networks dealing with converting images to paintings fall under this category. A lot of research has been done in this field and there exist a wide variety of solutions for the same. For instance: Universal Style Transfer via Feature Transforms, Fast Patch-based Style Transfer of Arbitrary Style,  Neural map style transfer exploration with GANs. The paper we chose to follow for the Style Transfer part of our project is: Image Style Transfer Using Convolutional Neural NetworksWe chose this paper because the resulting generated images, in our opinion, had a uniform style transfer without any discernible patches.
+                                        
+                                        The umbrella term, Super resolution methods, comprises of various methods that can be used to convert a low resolution image to a high resolution image. Some of the interesting research that has been done in this field, as discussed in Week 1-2 lectures is Learning a Deep Convolutional Network for Image Super-Resolution, Residual Dense Network for Image Super-Resolution. The paper we chose to follow for our project is: Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network. We chose this method because it changed the loss function to include human perception loss and gave much better results ( with reference to human perception) as compared to previous research done in the field.</p>
+                                    <h2 id="methods">Methods</h2>
+                                    <p>The first step of the project was to understand the papers and the various algorithms it employed to deliver the results. Even though, we understood the basic architecture of the network, our limited experience with deep networks made it challenging for us to implement the model from scratch. So we, first looked at an independent implementation of the model here, spent some time understanding it thoroughly and then discussed what modifications we could make that would make the results more interesting. We thought it might be fascinating to see the model understand styles of two different images and transfer them to the generated image. 
+
+                                        The basic logic behind style transfer, is given a content image and a style image and the network of Gaussian Noise, the noise is converted into a style transferred image in a pixel-wise manner. After that is done, a content loss and a style loss, with respect to the content and style images is calculated, weights are assigned to the same and the network is further improved based on the losses. In order to enable style transfer from two images, we additionally added a second style image, computed gram metrics for it and calculated its respective style loss. After that, we modified the loss function to also contain the style loss associated with the second style. So the final loss function contained content loss, style loss 1, style loss 2. Figures 1-4 show the results that we achieved from the modified network. 
+                                       
+                                       Since the generated images were quite small (600x400) and were lower resolution, the next step was to pass them through a Super Resolution Network. Our initial plan for the Super Resolution part was to implement a SRGAN network on our own. Prior to beginning this part of the project, we also attempted to train a GAN network on paired low-high res images by modifying the architecture of the Pix2pix model. We were unable to achieve that due to system limitations. We used the RELLISUR-Dataset of paired images for the same. 
+                                       
+                                       When we got to the implementation of the SRGAN, we first spent some time understanding the network architecture and how it translates to code from here. After we had done that, we set out to implement it on our own. Since we already had the RELLISUR-Dataset, we used that to prepare our training dataset of LR images from HR images. Instead of writing the whole architecture in one go, we wrote one part of it, for instance, the training data section and tested it in addition to the existing reference code. Every part of the code led to various different errors, for instance, we realized that the dataset we had used was not good for the SRGAN implementation and the output image was too small to register an output (512x0x0). This was just the first of a series of errors that we experienced while trying to implement the network. Due to time constraints and logistical constraints such as the training time required after we had fixed all the errors, would not work with the project deadlines as we do not have very powerful systems, we chose to instead use the reference code model as is, in order to test out our hypothesis of getting interesting high resolution style transfer results, that is being done by various art generator softwares. Figures 5-8 show the results achieved from the SRGAN network.</p>
+                                    <h2 id="results">Results</h2>
+       
+                                    <div style="border: 1px solid black; display: table; margin: 0 auto;">
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <h2>Style Image 1</h2>
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/3.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <h2>Style Image 2</h2>
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/2.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <h2>Generated Image</h2>
+                                            <a class="image fit" style="display: block; margin: 0 auto;"><img src="images/style/1.jpg" alt="" /></a>
+                                          </div>
+                                        </div>
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/3.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/6.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" style="display: block; margin: 0 auto;"><img src="images/style/11.jpg" alt="" /></a>
+                                          </div>
+                                        </div>
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/3.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/8.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" style="display: block; margin: 0 auto;"><img src="images/style/10.jpg" alt="" /></a>
+                                          </div>
+                                        </div>
+                                        <div style="display: table-row;">
+                                            <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                              <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/4.jpg" alt="" /></a>
+                                            </div>
+                                            <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                              <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/7.png" alt="" /></a>
+                                            </div>
+                                            <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                              <a class="image fit" style="display: block; margin: 0 auto;"><img src="images/style/9.jpg" alt="" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+            
+                                    <p>After SRGAN results (Low resolution image, High resolution SRGAN generated image respectively)</p>
+
+                                    <div style="border: 1px solid black; display: table; margin: 0 auto;">
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <h2>Low Res</h2>
+                                            <a  class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/1.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <h2>High Res</h2>
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/13.jpg" alt="" /></a>
+                                          </div>
+                                         
+                                        </div>
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/11.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/12.jpg" alt="" /></a>
+                                          </div>
+                                        </div>
+                                        <div style="display: table-row;">
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/10.jpg" alt="" /></a>
+                                          </div>
+                                          <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                            <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/15.jpg" alt="" /></a>
+                                          </div>
+                     
+                                        </div>
+                                        <div style="display: table-row;">
+                                            <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                              <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/9.jpg" alt="" /></a>
+                                            </div>
+                                            <div style="border: 1px solid black; display: table-cell; width: 33%; text-align: center;">
+                                              <a class="image fit" target="_blank" style="display: block; margin: 0 auto;"><img src="images/style/14.jpg" alt="" /></a>
+                                            </div>
+                            
+                                        </div>
+                                    </div>
+                                </section>
+
+                    </div>
+
+    
+                <!-- Copyright -->
+                    <div id="copyright">
+                        <ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+                    </div>
+
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrollex.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>

@@ -23,6 +23,18 @@
           <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <link rel="stylesheet" href="assets/css/main.css" />
           <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+          <style>
+                  h1 {
+                  font-size: 1rem;
+                  }
+                  h2 {
+                  font-size: 1rem;
+                  }
+                  p {
+                  font-size: 1rem;
+                  line-height: 1.5;
+                  }
+          </style>
       </head>
       <body class="is-preload">
   
@@ -53,11 +65,11 @@
                           <!-- Post -->
                               <section class="post">
                                   <header class="major">
-                                      <h1>3D Object Detection on Lidar Point Cloud</h1>
+                                      <h2>3D Object Detection on Lidar Point Cloud</h2>
                                   </header>
                                   
                                   <!-- Text stuff -->
-                                  <h1 id="introduction">Introduction</h1>
+                                  <h2 id="introduction">Introduction</h2>
                                   <p>Autonomous vehicles and robotics applications rely on accurate perception of their surroundings in order to navigate and perform tasks safely and effectively. One key aspect of perception is the ability to detect and classify objects in the environment. Traditional 2D object detection methods, which rely on image data from cameras, can be affected by occlusions and partial visibility of objects in complex and dynamic environments. Lidar (Light Detection and Ranging) sensors offer an alternative approach for 3D object detection, as they generate 3D point cloud data using lasers that can provide more accurate localization and orientation estimation of objects.</p>
                                   <p>In this paper, we propose a method for 3D object detection using lidar data in autonomous vehicles and robotics applications. Our approach involves representing the point cloud data in voxels, which are 3D grids that partition the data into small cubic cells, and a bird’s eye view (BEV) representation, which projects the 3D data onto a 2D plane. We use a combination of UNet, a deep learning approach commonly used for image segmentation, and these representations to effectively process and differentiate objects in cluttered scenes.</p>
                                   <p>We evaluate our approach on the Lyft dataset, which contains real-world urban driving scenarios with both lidar and camera data. The dataset includes a variety of objects, such as vehicles, pedestrians, and traffic signs, in a range of challenging conditions, including occlusions and partial visibility. We show that our method achieves strong performance in 3D object detection, outperforming several baseline approaches.</p>
