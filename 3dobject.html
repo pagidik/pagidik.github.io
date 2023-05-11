@@ -34,6 +34,12 @@
                   font-size: 1rem;
                   line-height: 1.5;
                   }
+                  .image.fit {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                  }
           </style>
       </head>
       <body class="is-preload">
@@ -104,12 +110,31 @@
                                   <p>To evaluate the performance of the trained neural network, we generated predictions for random examples from the training and validation datasets. We compared the predictions to the ground truth labels to assess the accuracy and generalization of the network. We also visualized the input data, ground truth labels, and network predictions to gain insight into the network’s behavior and identify areas for improvement.</p>
                                   <p>To facilitate visualization, we reversed the preprocessing steps to reconstruct the original point cloud data from the voxelized and BEV-transformed representation. We used this data to generate 2D images using a variety of rendering techniques, such as color-coding the point cloud based on the height dimension or overlaying the predicted labels on the point cloud. These images allowed us to qualitatively assess the quality of the predictions and the overall performance of the network.</p>
                                   <p>In summary, our method combines voxelization and BEV representation with supervised learning to effectively process and analyze 3D lidar point cloud data and train a neural network for a specific task. The resulting system is flexible and can be easily adapted to different applications by modifying the training data and the network architecture.</p>
+                                  <figure class="image fit">
+                                    <a href="#"><img src="images/3dobject/loss.png" alt="Training and Validation Loss" /></a>
+                                    <figcaption>Training and Validation Loss</figcaption>
+                                  </figure>
+                                  <figure class="image fit">
+                                    <a href="#" class="image fit"><img src="images/3dobject/1.jpeg" alt="" /></a>
+                                    <a href="#" class="image fit"><img src="images/3dobject/results.jpg" alt="" /></a>
+                                    <figcaption>Left most is the lidar input, the center image is the label and the rightmost is the predictions</figcaption>
+                                  </figure>                                  
+                                  <figure class="image fit">
+                                  <a href="#" class="image fit"><img src="images/3dobject/box.png" alt="" /></a>
+                                  <figcaption>Post Processing: by removing noise, finding contours and drawing</figcaption>
+                                  </figure>
                                   <h1 id="discussion-and-summary">Discussion and summary</h1>
                                   <p>In this paper, we have presented a method for 3D object detection using lidar data in autonomous vehicles and robotics applications. Our approach involves representing the point cloud data in voxels and a bird’s eye view (BEV) representation and using a combination of UNet and these representations to effectively process and differentiate objects in cluttered scenes. We have evaluated our approach on the Lyft dataset and showed that it outperforms several baseline approaches in 3D object detection, achieving strong performance in real-world urban driving scenarios with a variety of objects and challenging conditions.</p>
                                   <p>The use of lidar data in 3D object detection offers several advantages over traditional 2D methods that rely on image data. Lidar sensors generate 3D point cloud data using lasers, which allows for improved localization and orientation estimation of objects in dynamic environments. In addition, lidar data is not affected by occlusions and partial visibility in the same way that image data is, making it a more reliable source of information for perception in complex environments.</p>
                                   <p>There are several potential applications of our approach in the field of autonomous vehicles and robotics. In autonomous vehicles, accurate 3D object detection is critical for safe navigation and decision-making. Our method has the potential to be integrated into the perception systems of autonomous vehicles, allowing them to perceive and respond to their surroundings. In robotics, 3D object detection can be used for tasks such as grasping and manipulation of objects, as well as for navigation in dynamic environments.</p>
                                   <p>There are several directions for future work that can build upon the foundations presented in this paper. One potential avenue is to explore the use of other deep learning architectures, such as Mask R-CNN, for 3D object detection with lidar data. Another possibility is to investigate the use of multi-modal data, combining lidar and image data, for even more robust object detection. Additionally, further studies could be conducted to evaluate the performance of our approach in different types of environments and tasks.</p>
-              
+                                  <figure class="image fit">
+                                    <a href="#" class="image fit"><img src="images/3dobject/1.png" alt="" /></a>
+                                    <a href="#" class="image fit"><img src="images/3dobject/2.png" alt="" /></a>
+                                    <a href="#" class="image fit"><img src="images/3dobject/3.png" alt="" /></a>
+
+                                    <figcaption>The predictions after reprojection into the 3d space, and overlaying it with the images.The first row has cam back right image at the top left and Lidar top data on the right. In the same order in the next rows the images correspond to cam back, cam front right, cam front zoomed, cam front, cam back left, cam front left and cam front in the bottom right corner</figcaption>
+                                  </figure>
                                   </section>
   
                       </div>
