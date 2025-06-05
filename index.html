@@ -9,8 +9,11 @@
 		<title>Kishore's Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-                <link rel="stylesheet" href="assets/css/custom.css" />
+               <link rel="stylesheet" href="assets/css/main.css" />
+               <link rel="preconnect" href="https://fonts.googleapis.com">
+               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+               <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+               <link rel="stylesheet" href="assets/css/custom.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
 			h1 {
@@ -147,10 +150,18 @@
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
             camera.position.z = 2;
+
+            let mouseX = 0;
+            let mouseY = 0;
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+
             function animate() {
                 requestAnimationFrame(animate);
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
+                cube.rotation.x += 0.01 + mouseY * 0.1;
+                cube.rotation.y += 0.01 + mouseX * 0.1;
                 renderer.render(scene, camera);
             }
             animate();
