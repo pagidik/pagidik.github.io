@@ -1,5 +1,6 @@
 html, body, #wrapper, #main, #header, #footer {
     background-color: #111 !important;
+
     color: #eee;
     font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
     line-height: 1.6;
