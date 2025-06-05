@@ -1,5 +1,6 @@
-body {
-    background-color: #111;
+html, body, #wrapper, #main, #header, #footer {
+    background-color: #111 !important;
+
     color: #eee;
     font-family: 'Comic Neue', Arial, Helvetica, sans-serif;
     line-height: 1.6;
@@ -16,4 +17,10 @@ body {
 #intro {
     background: linear-gradient(135deg, #1f1f1f, #111);
     color: #fff;
+}
+a {
+    color: #ffc371;
+}
+a:hover {
+    color: #ff5f6d;
 }
