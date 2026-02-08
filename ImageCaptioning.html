@@ -1,364 +1,260 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning via Transformers | Kishore Reddy Pagidi</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .project-detail { padding: var(--space-5xl) 0; }
+        .project-detail-header { margin-bottom: var(--space-3xl); }
+        .project-detail-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-lg); }
+        .project-detail-meta { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-xl); }
+        .project-detail-tag { padding: var(--space-xs) var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: 0.875rem; }
+        .project-detail-content { max-width: 800px; margin: 0 auto; }
+        .project-detail-content h2 { font-family: var(--font-display); font-size: 1.75rem; margin: var(--space-3xl) 0 var(--space-lg); color: var(--color-text); }
+        .project-detail-content h3 { font-size: 1.25rem; margin: var(--space-2xl) 0 var(--space-md); color: var(--color-text); }
+        .project-detail-content p { margin-bottom: var(--space-lg); color: var(--color-text-secondary); line-height: 1.8; }
+        .project-detail-content img { width: 100%; border-radius: var(--radius-lg); margin: var(--space-xl) 0; background: white; padding: 0.75rem; }
+        .project-detail-content figure { margin: var(--space-2xl) 0; }
+        .project-detail-content figcaption { text-align: center; font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-sm); }
+        .back-link { display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--color-primary); margin-bottom: var(--space-2xl); text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .image-grid { display: grid; gap: var(--space-md); margin: var(--space-xl) 0; }
+        .image-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .image-grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl); margin: var(--space-2xl) 0; }
+        .result-item { text-align: center; }
+        .result-item img { width: 100%; border-radius: var(--radius-lg); margin-bottom: var(--space-sm); }
+        .result-item p { font-size: 0.875rem; color: var(--color-text-secondary); font-style: italic; }
+        .data-table { width: 100%; border-collapse: collapse; margin: var(--space-xl) 0; }
+        .data-table th, .data-table td { padding: var(--space-md); text-align: left; border-bottom: 1px solid var(--color-border); }
+        .data-table th { background: var(--color-surface); font-weight: 600; color: var(--color-text); }
+        .data-table td { color: var(--color-text-secondary); }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">KP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Work</a></li>
+                <li><a href="index.html#research" class="nav-link">Research</a></li>
+                <li><a href="index.html#writing" class="nav-link">Writing</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-  <!DOCTYPE HTML>
-  <!--
-      Massively by HTML5 UP
-      html5up.net | @ajlkn
-      Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-  -->
-  <html>
-      <head>
-          <title>Projects - Kishore's Portfolio</title>
-          <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-          <link rel="stylesheet" href="assets/css/main.css" />
-                <link rel="stylesheet" href="assets/css/custom.css" />
-          <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-          <style>
-                  h1 {
-                  font-size: 1rem;
-                  }
-                  h2 {
-                  font-size: 1rem;
-                  }
-                  p {
-                  font-size: 1rem;
-                  line-height: 1.5;
-                  }
-                  .image.fit {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    text-align: center;
-                  }
-          </style>
-      </head>
-      <body class="is-preload">
-  
-          <!-- Wrapper -->
-              <div id="wrapper">
-  
-                  <!-- Header -->
-                      <header id="header">
-                          <a href="Projects.html" class="logo">Projects</a>
-                      </header>
-  
-                  <!-- Nav -->
-                      <nav id="nav">
-                          <ul class="links">
-                              <li><a href="index.html">About</a></li>
-                              <li class="active"><a href="projects.html">Projects</a></li>
-                            <li><a href="blog/index.html">Blog</a></li>
-                              <li><a href="/assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
-                          </ul>
-                          <ul class="icons">
-                              <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-                              <li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-                          </ul>
-                      </nav>
-  
-                      <!-- Main -->
-                      <div id="main">
-  
-                          <!-- Post -->
-                              <section class="post">
-                                  <header class="major">
-                                      <h2>Image Captioning via Vision and Language Transformers</h2>
-                                  </header>
-                                  
-                                  <!-- Text stuff -->
-                                  <h2 id="introduction">Introduction</h2>
-                                  <p>The relationship between computer vision and natural language processing
-                                    applications, two major areas of deep learning, is one that is greatly increasing
-                                    in popularity, research and implementation today due to its many potential
-                                    use cases and benefits. Image captioning methods are a perfect combination of
-                                    these two areas of deep learning, combining object detection and classification
-                                    methods directly with sentence formation methods to create descriptive captions.
-                                    As previously stated, one of the primary reasons for the increase in popularity of
-                                    image captioning models is its many potential use cases and benefits. Automated
-                                    image captioning methods are used in industries such as marketing, editing, and
-                                    assistance services to complete tasks such as the automated captioning of social
-                                    media posts, recommendation systems for image and video editing, and assisting
-                                    visually impaired individuals with describing a visual of a live view or still image
-                                    [1]. These use cases increase aspects of an individual's life, such as efficiency
-                                    in their occupation or the general quality and simplicity of their everyday life.
-                                    Image captioning methods and models have proven to be extremely efficient in
-                                    these domains and are only becoming more accurate and robust 
-                                </p>
-                                  <p>In this study, we developed a transformer-based model to identify objects and
-                                    corresponding object locations in images and match those objects and locations
-                                    with descriptive captions. Transformer-based deep learning models have been
-                                    widely used to solve natural language processing problems but have recently
-                                    been more implemented in computer vision domains as well. A great strength
-                                    of transformer-based deep learning models is their ability to encode feature
-                                    location descriptions with detected features [1], whether that be the location of
-                                    a word in a sentence or the relative location of an object in an image. This is
-                                    an extremely important aspect when considering which model architecture to
-                                    use to solve an image captioning problem, as overall scene understanding is a
-                                    crucial aspect to generating an accurate, descriptive caption of an image. We
-                                    chose a transformer-based model architecture primarily because of this benefit,
-                                    implementing methods such as image patch extractors and descriptors, feature
-                                    encoders and decoders, and multi-head attention layers, further explained below
-                                    in the Approach section.
-                                </p>
-                                  <p>We used the Common Objects in Context (COCO) dataset [2] to train our
-                                    transformer-based image captioning model. The COCO dataset was created
-                                    for applications such as scene understanding and segmentation and aims to
-                                    solve three core research problems seen in common image datasets: detecting
-                                    non-iconic views (or non-canonical perspectives) of objects, contextual reasoning
-                                    between objects, and the precise 2D localization of objects [3]. The dataset
-                                    contains roughly 328,000 images of over 90 objects in their natural environment.
-                                    Most importantly, the dataset also contains roughly 4-6 captions for each image,
-                                    with over 2.5 million total captions describing key objects, object localizations
-                                    and scene environments. Two examples of images and corresponding captions
-                                    from the COCO dataset can be seen below in Figures 1 and 2.
-                                    </p>
-                                    <figure class="image fit">
-                                        <div style="width: 100%; display: flex; justify-content: space-between;">
-                                            <a href="#" class="image fit"><img src="images/imagecaption/image4.png" alt="" style="width: 70%;"/></a>
-                                            <a href="#" class="image fit"><img src="images/imagecaption/image1.png" alt="" style="width: 100%;"/></a>
-                                        </div>
-                                        <figcaption>Figure 1: Example image and captions from COCO dataset</figcaption>
-                                    </figure> 
-                                      <figure class="image fit">
-                                        <div style="width: 100%; display: flex; justify-content: space-between;">
-                                            <a href="#" class="image fit"><img src="images/imagecaption/image7.png" alt="" style="width: 70%;"/></a>
-                                            <a href="#" class="image fit"><img src="images/imagecaption/image2.png" alt="" style="width: 100%;"/></a>
-                                        </div>
-                                        <figcaption>Figure 2: Example image and captions from COCO dataset</figcaption>
-                                    </figure> 
-                                      <h1 id="method">Approach</h1>
-                                  <p>As previously stated, we chose to develop a transformer-based network architec-
-                                    ture to create our image captioning model. Our implementation comprises four
-                                    main components: a data pipeline, a vision transformer, a combined encoder
-                                    and a combined decoder</p>
-                                  <p>The data pipeline is a crucial first step to ensure the images and captions
-                                    downloaded from the COCO dataset are in the correct format to optimize our
-                                    model. Our data pipeline consists of four main steps: downloading the raw
-                                    data, grouping captions to their corresponding images, tokenizing the captions,
-                                    and transforming the images. The raw dataset of ~328,000 images and ~2.5
-                                    million captions is downloaded from the web. Each image is then paired with
-                                    its corresponding list of ~4-6 captions. Next, each caption is tokenized and
-                                    split into its key words, phrases and components. This step is crucial to the
-                                    network performance as the individual caption features and locations are utilized
-                                    in the encoder. Finally, the images are preprocessed by being resized to a certain
-                                    dimension optimized for the vision transformer and normalized.</p>
-                                  <p>Once the data is prepared, the first step of the image network is implementing
-                                    the vision transformer, or ViT. The general architecture of the vision transformer
-                                    can be seen below in Figure 3:</p>
-                                  <figure class="image fit">
-                                    <a href="#" class="image fit"><img src="images/imagecaption/image5.png" alt="" /></a>
-                                    <figcaption>Figure 3: Vision Transformer architecture</figcaption>
-                                  </figure> 
-                                  <p>The image is first split into 196 16x16 pixel patches. Each patch is flattened into a tensor of size 1x768 (3x16x16) during the patch embedding process, and is
-                                    concatenated with the positional embedding of the patch location in the image.
-                                    These final embeddings are passed to the main ViT encoder to create a learned
-                                    encoded representation of each patch embedding [7]. This ViT encoder contains
-                                    an architecture of attention layers, normalization layers and MLP layers, all of
-                                    which we experimented with and are further described in the following Results
-                                    section. The final output of the ViT is passed to the main transformer encoder</p>
-                                  <p>The second, and equally as important, aspect of the encoder is the caption
-                                    encoder. This part of the encoder is carried out primarily using multi-head
-                                    attention operation, shown in Figure 4:</p>
-                                    <figure class="image fit">
-                                        <a href="#" class="image fit"><img src="images/imagecaption/image6.png" alt="" /></a>
-                                        <figcaption>Figure 4: Graphical representation of Multi-Head Attention</figcaption>
-                                    </figure> 
-                                  <p>Each token of the caption is treated as an individual aspect of the caption and
-                                    is concatenated with a positional encoding based on where it is in the sentence,
-                                    similar to the ViT. These encodings are then fed the learnable parameters of the
-                                    multi-head attention method, represented by Query, Key and Value in Figure
-                                    4, which then produces an encoded representation for each word in the input
-                                    sequence, that now incorporates the attention scores for each word as well.</p>
-                                  <p>Once the encoded caption and image representations are calculated through the
-                                    attention layers, they are passed to the decoder block, shown highlighted in red
-                                    in Figure 5:
-                                    </p>
-                                    <figure class="image fit">
-                                        <a href="#" class="image fit"><img src="images/imagecaption/image3.png" alt="" /></a>
-                                        <figcaption>Figure 5: Entire Image Captioning Transformer Architecture</figcaption>
-                                    </figure> 
-                                  <p>The most important method of the decoder is the Cross Attention layer of the
-                                    network. This layer receives a representation of both the input image and target
-                                    caption and produces a final representation with the attention scores for each
-                                    generated caption token that also encapsulates the influence of the input image
-                                    attention. This representation is then passed through another set of attention,
-                                    normalization and MLP layers, and finally through a linear and softmax layer to
-                                    create a final output</p>
-                                  <p></p>
+    <main class="project-detail">
+        <div class="container">
+            <div class="project-detail-content">
+                <a href="index.html#research" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Research
+                </a>
 
-                                  <h2 id="results">Experiments and Results</h2>
-                                  <p>In this study, we evaluated the performance of our model by varying several
-                                    hyperparameters, including the number of heads, the number of layers, and the
-                                    batch size. We explored different configurations, ranging from 1 to 6 heads and
-                                    layers, as well as batch sizes from 8 to 256. Due to memory constraints and the
-                                    limitations of our computing resources, we were unable to increase the batch
-                                    size beyond 256, as this led to out-of-memory (OOM) errors.</p>
-                                  <p>We conducted our experiments using multiple GPUs, including the NVIDIA
-                                    P100, K40, and V100, with varying memory sizes ranging from 1 GB to 100 GB.
-                                    By increasing the available memory, we were able to accommodate larger batch
-                                    sizes, which in turn impacted the overall training process. On average, each
-                                    epoch took approximately 50 minutes to complete. Among the GPUs utilized,
-                                    the V100 demonstrated the most significant performance improvement.</p>
-                                  <p>Considering the time constraints of our study, we limited the experiments to a
-                                    single epoch for each configuration and compared the results accordingly. This
-                                    approach allowed us to efficiently assess the impact of different hyperparameters
-                                    on the model’s performance without incurring excessive computational costs.
-                                    Further analysis could potentially involve additional epochs or alternative con-
-                                    figurations to refine our understanding of the model’s behavior under different
-                                    conditions.
-                                    </p>
-                                    <table>
-                                        <caption>A table showing the number of heads, layers, model dimensions, and batch size and accuracy.</caption>
-                                        <thead>
-                                            <tr>
-                                                <th>num_heads</th>
-                                                <th>num_layers</th>
-                                                <th>batch_size</th>
-                                                <th>training time</th>
-                                                <th>accuracy</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>6</td>
-                                                <td>64</td>
-                                                <td>3267.45</td>
-                                                <td>0.2781</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>6</td>
-                                                <td>256</td>
-                                                <td>2905.82</td>
-                                                <td>0.3187</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>2</td>
-                                                <td>256</td>
-                                                <td>2905.00</td>
-                                                <td>0.3058</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>8</td>
-                                                <td>256</td>
-                                                <td>3269.32</td>
-                                                <td>0.3179</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                  <p>Table 1: A table showing the number of heads, layers, model dimensions, and
-                                    batch size and accuracy.</p>
-                                  <p>The results of our experiments are summarized in Table 1. From the table, we
-                                    can observe that the highest accuracy of 0.3187 and the lowest training time of
-                                    2905.82 seconds are achieved in the second row, with 6 heads, 6 layers, and a
-                                    batch size of 256. This suggests that increasing the number of heads and layers,
-                                    while keeping the batch size at the maximum allowable value, leads to better
-                                    performance in terms of both accuracy and training time.</p>
-                                  <p>In our experiments, we found that increasing the batch size contributed to
-                                    a significant improvement in accuracy. Consequently, we conducted further
-                                    iterations using the highest possible batch size (256) to maximize performance.
-                                    As the number of layers increased from 2 to 6, the accuracy improved, but
-                                    a further increase to 8 layers did not yield a substantial improvement. This
-                                    could imply that 6 layers might be the optimal choice for this specific problem.
-                                    Due to time constraints and computational limitations, we were unable to run
-                                    multiple epochs for each configuration. To overcome this limitation and still
-                                    evaluate the performance of our model effectively, we resorted to monitoring
-                                    the batch accuracy during training. Batch accuracy is a measure of the model’s
-                                    performance on a single mini-batch of data, providing a snapshot of how well
-                                    the model is learning from the current batch.</p>
-                                  <p>As we progressed through the training process, we observed that the batch
-                                    accuracy was steadily increasing, as expected. This indicates that our model was
-                                    successfully learning and adapting its parameters to minimize the loss on the
-                                    training data. Although batch accuracy is not as comprehensive as evaluating the
-                                    model’s performance over multiple epochs, it still provides a useful approximation
-                                    of the model’s ability to learn and generalize from the given dataset.</p>
-                                  <p>It is worth noting that the differences in training time are relatively small when
-                                    comparing configurations with the same batch size. This implies that the choice
-                                    of the number of heads and layers may have a limited impact on the training
-                                    time, while their influence on the model’s accuracy is more pronounced.</p>
-                                  <p>We employed a custom learning rate scheduler to adapt the learning rate during
-                                    the training process. The custom scheduler plays a crucial role in the model’s
-                                    learning process by dynamically adjusting the learning rate based on the current
-                                    training step and a specified warm-up period.</p>
-                                  <p>The impact of the number of layers and heads on training time and accuracy can be attributed to various factors. Let's discuss these factors separately for each hyperparameter:</p>
-                                  <p>
-                                    Number of Layers:
-                                    The number of layers in a neural network directly affects its depth, which in turn influences its representational capacity. A deeper network can learn more complex and hierarchical features from the input data. As the number of layers increases, the model becomes more capable of capturing intricate patterns and relationships, leading to improved accuracy.</p>
-                                  <p>However, adding more layers also increases the number of parameters and computations, which can affect training time. In some cases, the increase in training time may be negligible, as observed in the provided table, while in other cases, it may be more substantial, depending on the model architecture and other factors. Additionally, deeper networks are more prone to overfitting, especially when training on smaller datasets, and may require more sophisticated regularization techniques or larger datasets to generalize well.</p>
-                                  <p>
-                                    Number of Heads:
-                                    In the context of attention mechanisms, such as those used in the Transformer architecture, the number of heads impacts the model's ability to capture different aspects of the input data simultaneously. Each head can focus on different parts or features of the input, allowing the model to learn a richer and more diverse representation of the data. Consequently, increasing the number of heads can lead to better performance and higher accuracy.</p>
-                                  <p>On the other hand, increasing the number of heads also increases the number of parameters and computations involved, which can affect the training time. In some cases, the increase in training time may be minimal, while in others, it may be more significant, depending on the model architecture, the size of the input data, and other factors. The optimal number of heads might depend on the specific problem and dataset, and it may require experimentation to determine the best balance between accuracy and training time.</p>
-                                  <p>Our results suggest that increasing the batch size, as well as the number of heads and layers, can lead to improved performance in terms of accuracy. However, further analysis and experimentation with different hyperparameter settings may be necessary to fully understand the trade-offs between accuracy, training time, and computational resources.</p>
-                                  <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/1.png" style="width: 100%;" alt="bus image" />
-                                        <p>A red and white double decker bus is parked in the street</p>
-                                    </div>
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/2.png" style="width: 100%;" alt="skateboard image" />
-                                        <p>A man doing a skateboard trick on a skateboard.</p>
-                                    </div>
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/3.png" style="width: 100%;" alt="ramp image" />
-                                        <p>A man jumping over a skate board on a ramp.1</p>
-                                    </div>
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/4.png" style="width: 100%;" alt="car image" />
-                                        <p>A car sitting on the ground in front of a building.</p>
-                                    </div>
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/5.png" style="width: 100%;" alt="baseball image" />
-                                        <p>A man in white shirt holding a bat and a ball</p>
-                                    </div>
-                                    <div style="width: 45%; text-align: center;">
-                                        <img src="images/imagecaption/6.png" style="width: 100%;" alt="laptop image" />
-                                        <p>A man is sitting on a bed with a laptop on the bed</p>
-                                    </div>
-                                </div>
-                                  <h1 id="discussion-and-summary">Conclusion</h1>
-                                  <p>Deep learning applications that combine aspects of computer vision and natural
-                                    language processing methods, such as image captioning systems, will continue to
-                                    increase in efficiency, accuracy and use in the near future due to today’s increase
-                                    in artificial intelligence studies and use cases. Many individuals and organizations
-                                    rely on efficiency and accuracy of these models to complete tasks and increase
-                                    factors such as job performance and overall quality of life. Transformer-based
-                                    deep learning architectures have proven to be the leading methods for appli-
-                                    cations that combine these two industries. In this study, we have shown that
-                                    a transformer-based deep learning model containing aspects such as a vision transformer, language encoder and decoder blocks can be extremely effective
-                                    at tasks combining aspects of computer vision and natural language processing.
-                                    Furthermore, altering the architecture of attention, normalization, and MLP
-                                    layers within the transformer architecture can greatly affect the overall output</p>
-                                    
-                                    
-                                  </section>
-  
-                      </div>
-  
-              </div>
-  
-          <!-- Scripts -->
-              <script src="assets/js/jquery.min.js"></script>
-              <script src="assets/js/jquery.scrollex.min.js"></script>
-              <script src="assets/js/jquery.scrolly.min.js"></script>
-              <script src="assets/js/browser.min.js"></script>
-              <script src="assets/js/breakpoints.min.js"></script>
-              <script src="assets/js/util.js"></script>
-              <script src="assets/js/main.js"></script>
-  
-      </body>
-  </html></html>
+                <header class="project-detail-header">
+                    <h1 class="project-detail-title">Image Captioning via Vision and Language Transformers</h1>
+                    <div class="project-detail-meta">
+                        <span class="project-detail-tag">Deep Learning</span>
+                        <span class="project-detail-tag">Computer Vision</span>
+                        <span class="project-detail-tag">Natural Language Processing</span>
+                        <span class="project-detail-tag">Transformers</span>
+                    </div>
+                </header>
+
+                <img src="images/imagecaption/1.png" alt="Image Captioning Overview">
+
+                <h2>Introduction</h2>
+                <p>The relationship between computer vision and natural language processing applications, two major areas of deep learning, is one that is greatly increasing in popularity, research and implementation today due to its many potential use cases and benefits. Image captioning methods are a perfect combination of these two areas of deep learning, combining object detection and classification methods directly with sentence formation methods to create descriptive captions.</p>
+
+                <p>As previously stated, one of the primary reasons for the increase in popularity of image captioning models is its many potential use cases and benefits. Automated image captioning methods are used in industries such as marketing, editing, and assistance services to complete tasks such as the automated captioning of social media posts, recommendation systems for image and video editing, and assisting visually impaired individuals with describing a visual of a live view or still image [1]. These use cases increase aspects of an individual's life, such as efficiency in their occupation or the general quality and simplicity of their everyday life. Image captioning methods and models have proven to be extremely efficient in these domains and are only becoming more accurate and robust.</p>
+
+                <p>In this study, we developed a transformer-based model to identify objects and corresponding object locations in images and match those objects and locations with descriptive captions. Transformer-based deep learning models have been widely used to solve natural language processing problems but have recently been more implemented in computer vision domains as well. A great strength of transformer-based deep learning models is their ability to encode feature location descriptions with detected features [1], whether that be the location of a word in a sentence or the relative location of an object in an image. This is an extremely important aspect when considering which model architecture to use to solve an image captioning problem, as overall scene understanding is a crucial aspect to generating an accurate, descriptive caption of an image. We chose a transformer-based model architecture primarily because of this benefit, implementing methods such as image patch extractors and descriptors, feature encoders and decoders, and multi-head attention layers, further explained below in the Approach section.</p>
+
+                <p>We used the Common Objects in Context (COCO) dataset [2] to train our transformer-based image captioning model. The COCO dataset was created for applications such as scene understanding and segmentation and aims to solve three core research problems seen in common image datasets: detecting non-iconic views (or non-canonical perspectives) of objects, contextual reasoning between objects, and the precise 2D localization of objects [3]. The dataset contains roughly 328,000 images of over 90 objects in their natural environment. Most importantly, the dataset also contains roughly 4-6 captions for each image, with over 2.5 million total captions describing key objects, object localizations and scene environments.</p>
+
+                <div class="image-grid cols-2">
+                    <figure>
+                        <img src="images/imagecaption/image4.png" alt="COCO Dataset Example 1">
+                        <img src="images/imagecaption/image1.png" alt="COCO Captions Example 1">
+                        <figcaption>Figure 1: Example image and captions from COCO dataset</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/imagecaption/image7.png" alt="COCO Dataset Example 2">
+                        <img src="images/imagecaption/image2.png" alt="COCO Captions Example 2">
+                        <figcaption>Figure 2: Example image and captions from COCO dataset</figcaption>
+                    </figure>
+                </div>
+
+                <h2>Approach</h2>
+                <p>As previously stated, we chose to develop a transformer-based network architecture to create our image captioning model. Our implementation comprises four main components: a data pipeline, a vision transformer, a combined encoder and a combined decoder.</p>
+
+                <p>The data pipeline is a crucial first step to ensure the images and captions downloaded from the COCO dataset are in the correct format to optimize our model. Our data pipeline consists of four main steps: downloading the raw data, grouping captions to their corresponding images, tokenizing the captions, and transforming the images. The raw dataset of ~328,000 images and ~2.5 million captions is downloaded from the web. Each image is then paired with its corresponding list of ~4-6 captions. Next, each caption is tokenized and split into its key words, phrases and components. This step is crucial to the network performance as the individual caption features and locations are utilized in the encoder. Finally, the images are preprocessed by being resized to a certain dimension optimized for the vision transformer and normalized.</p>
+
+                <p>Once the data is prepared, the first step of the image network is implementing the vision transformer, or ViT. The general architecture of the vision transformer can be seen below in Figure 3:</p>
+
+                <figure>
+                    <img src="images/imagecaption/image5.png" alt="Vision Transformer Architecture">
+                    <figcaption>Figure 3: Vision Transformer architecture</figcaption>
+                </figure>
+
+                <p>The image is first split into 196 16x16 pixel patches. Each patch is flattened into a tensor of size 1x768 (3x16x16) during the patch embedding process, and is concatenated with the positional embedding of the patch location in the image. These final embeddings are passed to the main ViT encoder to create a learned encoded representation of each patch embedding [7]. This ViT encoder contains an architecture of attention layers, normalization layers and MLP layers, all of which we experimented with and are further described in the following Results section. The final output of the ViT is passed to the main transformer encoder.</p>
+
+                <p>The second, and equally as important, aspect of the encoder is the caption encoder. This part of the encoder is carried out primarily using multi-head attention operation, shown in Figure 4:</p>
+
+                <figure>
+                    <img src="images/imagecaption/image6.png" alt="Multi-Head Attention">
+                    <figcaption>Figure 4: Graphical representation of Multi-Head Attention</figcaption>
+                </figure>
+
+                <p>Each token of the caption is treated as an individual aspect of the caption and is concatenated with a positional encoding based on where it is in the sentence, similar to the ViT. These encodings are then fed the learnable parameters of the multi-head attention method, represented by Query, Key and Value in Figure 4, which then produces an encoded representation for each word in the input sequence, that now incorporates the attention scores for each word as well.</p>
+
+                <p>Once the encoded caption and image representations are calculated through the attention layers, they are passed to the decoder block, shown highlighted in red in Figure 5:</p>
+
+                <figure>
+                    <img src="images/imagecaption/image3.png" alt="Image Captioning Transformer Architecture">
+                    <figcaption>Figure 5: Entire Image Captioning Transformer Architecture</figcaption>
+                </figure>
+
+                <p>The most important method of the decoder is the Cross Attention layer of the network. This layer receives a representation of both the input image and target caption and produces a final representation with the attention scores for each generated caption token that also encapsulates the influence of the input image attention. This representation is then passed through another set of attention, normalization and MLP layers, and finally through a linear and softmax layer to create a final output.</p>
+
+                <h2>Experiments and Results</h2>
+                <p>In this study, we evaluated the performance of our model by varying several hyperparameters, including the number of heads, the number of layers, and the batch size. We explored different configurations, ranging from 1 to 6 heads and layers, as well as batch sizes from 8 to 256. Due to memory constraints and the limitations of our computing resources, we were unable to increase the batch size beyond 256, as this led to out-of-memory (OOM) errors.</p>
+
+                <p>We conducted our experiments using multiple GPUs, including the NVIDIA P100, K40, and V100, with varying memory sizes ranging from 1 GB to 100 GB. By increasing the available memory, we were able to accommodate larger batch sizes, which in turn impacted the overall training process. On average, each epoch took approximately 50 minutes to complete. Among the GPUs utilized, the V100 demonstrated the most significant performance improvement.</p>
+
+                <p>Considering the time constraints of our study, we limited the experiments to a single epoch for each configuration and compared the results accordingly. This approach allowed us to efficiently assess the impact of different hyperparameters on the model's performance without incurring excessive computational costs. Further analysis could potentially involve additional epochs or alternative configurations to refine our understanding of the model's behavior under different conditions.</p>
+
+                <table class="data-table">
+                    <caption style="text-align: left; margin-bottom: var(--space-md); color: var(--color-text-muted);">Table 1: Hyperparameter configurations and corresponding results</caption>
+                    <thead>
+                        <tr>
+                            <th>num_heads</th>
+                            <th>num_layers</th>
+                            <th>batch_size</th>
+                            <th>training time (s)</th>
+                            <th>accuracy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>6</td>
+                            <td>64</td>
+                            <td>3267.45</td>
+                            <td>0.2781</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>6</td>
+                            <td>256</td>
+                            <td>2905.82</td>
+                            <td>0.3187</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2</td>
+                            <td>256</td>
+                            <td>2905.00</td>
+                            <td>0.3058</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>8</td>
+                            <td>256</td>
+                            <td>3269.32</td>
+                            <td>0.3179</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>The results of our experiments are summarized in Table 1. From the table, we can observe that the highest accuracy of 0.3187 and the lowest training time of 2905.82 seconds are achieved in the second row, with 6 heads, 6 layers, and a batch size of 256. This suggests that increasing the number of heads and layers, while keeping the batch size at the maximum allowable value, leads to better performance in terms of both accuracy and training time.</p>
+
+                <p>In our experiments, we found that increasing the batch size contributed to a significant improvement in accuracy. Consequently, we conducted further iterations using the highest possible batch size (256) to maximize performance. As the number of layers increased from 2 to 6, the accuracy improved, but a further increase to 8 layers did not yield a substantial improvement. This could imply that 6 layers might be the optimal choice for this specific problem. Due to time constraints and computational limitations, we were unable to run multiple epochs for each configuration. To overcome this limitation and still evaluate the performance of our model effectively, we resorted to monitoring the batch accuracy during training. Batch accuracy is a measure of the model's performance on a single mini-batch of data, providing a snapshot of how well the model is learning from the current batch.</p>
+
+                <p>As we progressed through the training process, we observed that the batch accuracy was steadily increasing, as expected. This indicates that our model was successfully learning and adapting its parameters to minimize the loss on the training data. Although batch accuracy is not as comprehensive as evaluating the model's performance over multiple epochs, it still provides a useful approximation of the model's ability to learn and generalize from the given dataset.</p>
+
+                <p>It is worth noting that the differences in training time are relatively small when comparing configurations with the same batch size. This implies that the choice of the number of heads and layers may have a limited impact on the training time, while their influence on the model's accuracy is more pronounced.</p>
+
+                <p>We employed a custom learning rate scheduler to adapt the learning rate during the training process. The custom scheduler plays a crucial role in the model's learning process by dynamically adjusting the learning rate based on the current training step and a specified warm-up period.</p>
+
+                <h3>Impact of Number of Layers</h3>
+                <p>The number of layers in a neural network directly affects its depth, which in turn influences its representational capacity. A deeper network can learn more complex and hierarchical features from the input data. As the number of layers increases, the model becomes more capable of capturing intricate patterns and relationships, leading to improved accuracy.</p>
+
+                <p>However, adding more layers also increases the number of parameters and computations, which can affect training time. In some cases, the increase in training time may be negligible, as observed in the provided table, while in other cases, it may be more substantial, depending on the model architecture and other factors. Additionally, deeper networks are more prone to overfitting, especially when training on smaller datasets, and may require more sophisticated regularization techniques or larger datasets to generalize well.</p>
+
+                <h3>Impact of Number of Heads</h3>
+                <p>In the context of attention mechanisms, such as those used in the Transformer architecture, the number of heads impacts the model's ability to capture different aspects of the input data simultaneously. Each head can focus on different parts or features of the input, allowing the model to learn a richer and more diverse representation of the data. Consequently, increasing the number of heads can lead to better performance and higher accuracy.</p>
+
+                <p>On the other hand, increasing the number of heads also increases the number of parameters and computations involved, which can affect the training time. In some cases, the increase in training time may be minimal, while in others, it may be more significant, depending on the model architecture, the size of the input data, and other factors. The optimal number of heads might depend on the specific problem and dataset, and it may require experimentation to determine the best balance between accuracy and training time.</p>
+
+                <p>Our results suggest that increasing the batch size, as well as the number of heads and layers, can lead to improved performance in terms of accuracy. However, further analysis and experimentation with different hyperparameter settings may be necessary to fully understand the trade-offs between accuracy, training time, and computational resources.</p>
+
+                <h3>Sample Results</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <img src="images/imagecaption/1.png" alt="Bus image">
+                        <p>A red and white double decker bus is parked in the street</p>
+                    </div>
+                    <div class="result-item">
+                        <img src="images/imagecaption/2.png" alt="Skateboard image">
+                        <p>A man doing a skateboard trick on a skateboard.</p>
+                    </div>
+                    <div class="result-item">
+                        <img src="images/imagecaption/3.png" alt="Ramp image">
+                        <p>A man jumping over a skate board on a ramp.</p>
+                    </div>
+                    <div class="result-item">
+                        <img src="images/imagecaption/4.png" alt="Car image">
+                        <p>A car sitting on the ground in front of a building.</p>
+                    </div>
+                    <div class="result-item">
+                        <img src="images/imagecaption/5.png" alt="Baseball image">
+                        <p>A man in white shirt holding a bat and a ball</p>
+                    </div>
+                    <div class="result-item">
+                        <img src="images/imagecaption/6.png" alt="Laptop image">
+                        <p>A man is sitting on a bed with a laptop on the bed</p>
+                    </div>
+                </div>
+
+                <h2>Conclusion</h2>
+                <p>Deep learning applications that combine aspects of computer vision and natural language processing methods, such as image captioning systems, will continue to increase in efficiency, accuracy and use in the near future due to today's increase in artificial intelligence studies and use cases. Many individuals and organizations rely on efficiency and accuracy of these models to complete tasks and increase factors such as job performance and overall quality of life. Transformer-based deep learning architectures have proven to be the leading methods for applications that combine these two industries. In this study, we have shown that a transformer-based deep learning model containing aspects such as a vision transformer, language encoder and decoder blocks can be extremely effective at tasks combining aspects of computer vision and natural language processing. Furthermore, altering the architecture of attention, normalization, and MLP layers within the transformer architecture can greatly affect the overall output.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#projects">Work</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#writing">Writing</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-shot Imitation Learning via Interaction Warping | Kishore Reddy Pagidi</title>
+    <meta name="description" content="CoRL 2023 paper on one-shot imitation learning for robotic manipulation using shape warping and interaction keypoints.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .project-detail { padding: var(--space-5xl) 0; }
+        .project-detail-header { margin-bottom: var(--space-3xl); }
+        .project-detail-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-lg); }
+        .project-detail-meta { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-xl); }
+        .project-detail-tag { padding: var(--space-xs) var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: 0.875rem; }
+        .project-detail-tag--accent { background: rgba(99, 102, 241, 0.15); border-color: var(--color-primary); color: var(--color-primary); }
+        .project-detail-content { max-width: 800px; margin: 0 auto; }
+        .project-detail-content h2 { font-family: var(--font-display); font-size: 1.75rem; margin: var(--space-3xl) 0 var(--space-lg); color: var(--color-text); }
+        .project-detail-content h3 { font-size: 1.25rem; margin: var(--space-2xl) 0 var(--space-md); color: var(--color-text); }
+        .project-detail-content p { margin-bottom: var(--space-lg); color: var(--color-text-secondary); line-height: 1.8; }
+        .project-detail-content img { width: 100%; border-radius: var(--radius-lg); margin: var(--space-xl) 0; background: white; padding: 0.75rem; }
+        .project-detail-content figure { margin: var(--space-2xl) 0; }
+        .project-detail-content figcaption { text-align: center; font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-sm); }
+        .back-link { display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--color-primary); margin-bottom: var(--space-2xl); text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+
+        .paper-links { display: flex; flex-wrap: wrap; gap: var(--space-md); margin: var(--space-2xl) 0; }
+        .paper-link { display: inline-flex; align-items: center; gap: var(--space-sm); padding: var(--space-md) var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); color: var(--color-text); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all var(--transition-base); }
+        .paper-link:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+        .paper-link svg { flex-shrink: 0; }
+
+        .authors { font-size: 1rem; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-xl); }
+        .authors strong { color: var(--color-primary); }
+        .venue { display: inline-block; padding: var(--space-sm) var(--space-lg); background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1)); border: 1px solid var(--color-primary); border-radius: var(--radius-full); color: var(--color-primary); font-weight: 600; font-size: 0.875rem; margin-bottom: var(--space-2xl); }
+
+        .key-insight { padding: var(--space-xl); background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05)); border-left: 3px solid var(--color-primary); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: var(--space-2xl) 0; }
+        .key-insight p { color: var(--color-text); margin-bottom: 0; font-size: 1.05rem; }
+
+        .method-steps { display: grid; gap: var(--space-lg); margin: var(--space-xl) 0; }
+        .method-step { padding: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); }
+        .method-step-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--color-primary); color: white; border-radius: 50%; font-weight: 700; font-size: 0.875rem; margin-bottom: var(--space-md); }
+        .method-step h4 { font-size: 1.1rem; margin-bottom: var(--space-sm); }
+        .method-step p { font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 0; }
+
+        @media (min-width: 768px) {
+            .method-steps { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">KP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Work</a></li>
+                <li><a href="index.html#research" class="nav-link">Research</a></li>
+                <li><a href="index.html#writing" class="nav-link">Writing</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="project-detail">
+        <div class="container">
+            <div class="project-detail-content">
+                <a href="index.html#research" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Research
+                </a>
+
+                <header class="project-detail-header">
+                    <span class="venue">Published at CoRL 2023 &middot; Atlanta, GA</span>
+                    <h1 class="project-detail-title">One-shot Imitation Learning via Interaction Warping</h1>
+                    <div class="project-detail-meta">
+                        <span class="project-detail-tag project-detail-tag--accent">Peer-Reviewed</span>
+                        <span class="project-detail-tag">Robotics</span>
+                        <span class="project-detail-tag">Imitation Learning</span>
+                        <span class="project-detail-tag">Computer Vision</span>
+                    </div>
+                    <p class="authors">
+                        Ondrej Biza, Skye Thompson, <strong>Kishore Reddy Pagidi</strong>, Abhinav Kumar,
+                        Elise van der Pol, Robin Walters, Thomas Kipf, Jan-Willem van de Meent,
+                        Lawson L.S. Wong, Robert Platt
+                    </p>
+                    <p class="authors" style="font-size: 0.875rem; color: var(--color-text-muted);">
+                        Northeastern University &middot; Brown University &middot; Microsoft Research &middot; Google DeepMind &middot; University of Amsterdam
+                    </p>
+                </header>
+
+                <div class="paper-links">
+                    <a href="https://arxiv.org/abs/2306.12392" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Read Paper (arXiv)
+                    </a>
+                    <a href="https://github.com/ondrejbiza/shapewarping" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        View Code
+                    </a>
+                    <a href="https://shapewarping.github.io/" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        Project Website
+                    </a>
+                    <a href="https://medium.com/@kishorereddy097/from-segments-to-skills-teaching-robots-to-manipulate-objects-theyve-never-seen-6cac05ba5d59" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                        Blog Post (Medium)
+                    </a>
+                </div>
+
+                <figure>
+                    <img src="images/corl/method.png" alt="Interaction Warping method overview">
+                    <figcaption>Method overview: Interaction Warping learns manipulation policies from a single demonstration by encoding actions as spatial keypoints that deform with object geometry.</figcaption>
+                </figure>
+
+                <div class="key-insight">
+                    <p>What if a robot could learn to manipulate an object it has never seen before, from just a single demonstration? This paper introduces Interaction Warping &mdash; a method that makes this possible by decoupling what a robot learns about actions from the specific objects it trains on.</p>
+                </div>
+
+                <h2>The Problem</h2>
+                <p>Teaching robots to manipulate objects is hard. Traditional approaches require hundreds or thousands of demonstrations, and even then, robots struggle to generalize to objects they haven't been trained on. Pick up a mug in training, and the robot might fail when faced with a cup that's slightly different. This brittleness makes real-world deployment impractical.</p>
+                <p>The core challenge is that most imitation learning methods entangle the action (how to grasp) with the specific object geometry (the exact shape of this mug). Change the object, and the learned action breaks.</p>
+
+                <h2>Our Approach: Interaction Warping</h2>
+                <p>We tackled this by separating the "what to do" from the "what it looks like." Our method, Interaction Warping, learns SE(3) manipulation policies from a single demonstration by encoding actions as spatial keypoints on object surfaces, then warping those keypoints when the object shape changes.</p>
+
+                <div class="method-steps">
+                    <div class="method-step">
+                        <span class="method-step-number">1</span>
+                        <h4>Segment & Perceive</h4>
+                        <p>Using cutting-edge segmentation models (including Meta's Segment Anything), we extract clean point clouds of target objects from cluttered real-world scenes.</p>
+                    </div>
+                    <div class="method-step">
+                        <span class="method-step-number">2</span>
+                        <h4>Warp the Shape</h4>
+                        <p>We fit deformable models that align point clouds across different object instances within the same category, learning the variation patterns of object shapes.</p>
+                    </div>
+                    <div class="method-step">
+                        <span class="method-step-number">3</span>
+                        <h4>Transfer the Action</h4>
+                        <p>Manipulation actions encoded as keypoints automatically deform alongside the warped geometry, enabling the robot to execute the same skill on entirely new objects.</p>
+                    </div>
+                </div>
+
+                <h2>Why This Matters</h2>
+                <p>Most robots in factories today are programmed for one specific task with one specific object. If a warehouse changes its packaging or a factory introduces a new part, everything needs to be reprogrammed. Our work moves toward robots that can adapt on the fly &mdash; see a new object, understand its shape, and figure out how to interact with it based on prior experience with similar objects.</p>
+                <p>The ability to learn from a single demonstration is particularly powerful. It means a human operator could show a robot how to perform a task once, and the robot could generalize that skill across variations of the same task. This dramatically reduces the time and expertise needed to deploy robotic manipulation systems.</p>
+
+                <h2>Results</h2>
+                <p>We validated Interaction Warping on both simulated and real-world object rearrangement tasks. The method successfully:</p>
+                <ul style="color: var(--color-text-secondary); line-height: 2; padding-left: var(--space-xl); margin-bottom: var(--space-xl);">
+                    <li>Predicted 3D object geometry and grasping strategies in unconstrained environments</li>
+                    <li>Generalized manipulation behaviors from a single demonstration to novel objects</li>
+                    <li>Executed SE(3) pick-and-place, stacking, and rearrangement tasks in the real world</li>
+                    <li>Outperformed baseline one-shot methods on shape generalization benchmarks</li>
+                </ul>
+
+                <figure>
+                    <img src="images/corl/exp1.png" alt="Simulation experiment results">
+                    <figcaption>Simulation experiments: One-shot generalization across different object instances for pick-and-place and stacking tasks.</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/corl/exp2.png" alt="Real-world experiment results">
+                    <figcaption>Real-world experiments: The robot successfully manipulates novel objects it has never seen during training.</figcaption>
+                </figure>
+
+                <h2>My Contribution</h2>
+                <p>My role focused on the perception pipeline &mdash; integrating state-of-the-art segmentation models to allow the robot to perceive and understand objects in real-world scenes. This involved bridging the gap between foundation vision models like Segment Anything and the downstream manipulation policy, ensuring the robot could reliably extract clean object representations from noisy, cluttered environments.</p>
+                <p>This work was done during my time at Northeastern University's Robot Learning Lab, collaborating with researchers from Brown University, Microsoft Research, Google DeepMind, and the University of Amsterdam.</p>
+
+                <h2>From Research to Product</h2>
+                <p>This research experience shaped how I think about AI products today. At SOLIDWORKS, I apply the same principle &mdash; bridging cutting-edge AI research with practical applications that engineers use daily. The question is always the same: how do you take a powerful AI capability and make it useful, reliable, and accessible to non-experts?</p>
+                <p>The segmentation and perception work I did for this paper directly informs my thinking about computer vision features in CAD &mdash; how AI can understand 3D geometry, recognize patterns, and augment human design workflows.</p>
+
+                <div class="paper-links" style="margin-top: var(--space-3xl); padding-top: var(--space-2xl); border-top: 1px solid var(--color-border);">
+                    <a href="https://arxiv.org/abs/2306.12392" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Read the Full Paper
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=HM4-fvoAAAAJ" class="paper-link" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Google Scholar Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#projects">Work</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#writing">Writing</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

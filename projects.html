@@ -1,125 +1,176 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Projects - Kishore's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-                <link rel="stylesheet" href="assets/css/custom.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Projects | Kishore Reddy Pagidi</title>
+    <meta name="description" content="Research and technical projects in robotics, computer vision, autonomous vehicles, and deep learning by Kishore Reddy Pagidi.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .page-header {
+            padding: calc(var(--space-5xl) + 80px) 0 var(--space-3xl);
+            text-align: center;
+        }
+        .page-header .section-label {
+            display: inline-block;
+            margin-bottom: var(--space-md);
+        }
+        .page-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: var(--space-lg);
+            color: var(--color-text);
+        }
+        .page-description {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+        .projects-listing {
+            padding: var(--space-3xl) 0 var(--space-5xl);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">KP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Work</a></li>
+                <li><a href="index.html#research" class="nav-link">Research</a></li>
+                <li><a href="index.html#writing" class="nav-link">Writing</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="section-label">Research & Technical Work</span>
+                <h1 class="page-title">Research Projects</h1>
+                <p class="page-description">
+                    Exploring robotics, computer vision, and autonomous systems through hands-on research
+                    at Northeastern University and Mercedes-Benz R&D.
+                </p>
+            </div>
+        </section>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="" class="logo">Projects</a>
-					</header>
+        <section class="projects-listing">
+            <div class="container">
+                <div class="research-grid">
+                    <a href="3dobject.html" class="research-card animate-fade-up" style="--delay: 0.1s">
+                        <div class="research-image">
+                            <img src="images/lidarOD/1.png" alt="3D Object Detection" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">Autonomous Vehicles</span>
+                            <h3 class="research-title">3D Object Detection</h3>
+                            <p class="research-description">
+                                LiDAR-based 3D object detection using voxelization and bird's eye view for autonomous driving applications.
+                            </p>
+                        </div>
+                    </a>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="index.html">About</a></li>
-							<li class="active"><a href="projects.html">Projects</a></li>
-                            <li><a href="blog/index.html">Blog</a></li>
-							<li><a href="/assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
-						</ul>
-						<ul class="icons">
-                            <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+                    <a href="legoloam.html" class="research-card animate-fade-up" style="--delay: 0.2s">
+                        <div class="research-image">
+                            <img src="images/legoloam/demo32x.gif" alt="LEGO LOAM" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">SLAM</span>
+                            <h3 class="research-title">LEGO LOAM vs SC-LEGO LOAM</h3>
+                            <p class="research-description">
+                                Comparative study on LiDAR odometry and mapping using data from NUANCE autonomous vehicle platform.
+                            </p>
+                        </div>
+                    </a>
 
-				<!-- Main -->
-					<div id="main">
+                    <a href="ImageCaptioning.html" class="research-card animate-fade-up" style="--delay: 0.3s">
+                        <div class="research-image">
+                            <img src="images/imagecaption/1.png" alt="Image Captioning" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">Deep Learning</span>
+                            <h3 class="research-title">Image Captioning via Transformers</h3>
+                            <p class="research-description">
+                                Transformer-based image captioning model combining computer vision and NLP for descriptive caption generation.
+                            </p>
+                        </div>
+                    </a>
 
-                        <!-- Posts -->
-                        <section class="posts">
-                            <article>
-                                <header>
-                                    <h2><a href="3dobject.html">3D Object Detection
-                                    </a></h2>
-                                </header>
-                                <a href="3dobject.html" class="image fit"><img src="images/lidarOD/1.png" alt="" /></a>
-                                <p>A method for 3D object detection using lidar data in autonomous vehicles and robotic applications. The approach involves voxellization and bird's eye view(BEV)</p>
-                                <ul class="actions special">
-                                    <li><a href="3dobject.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-                            <article>
-                                <header>
-                                    <h2><a href="legoloam.html">A comparitive study on LEGO LOAM and <br>
-										SC-LEGO LOAM</a></h2>
-                                </header>
-                                <a href="legoloam.html" class="image fit"><img src="images/legoloam/demo32x.gif" alt="" /></a>
-								<p>A comparative study was conducted to evaluate the performance of LEGO LOAM and SC LEGO LOAM in creating 3D maps of complex environments. Data was collected using an autonomous car NUANCE equipped with laser rangefinders, cameras, and inertial measurement units. </p>
-                                <ul class="actions special">
-                                    <li><a href="legoloam.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-							<article>
-                                <header>
-                                    <h2><a href="ImageCaptioning.html">Image Captioning<br>
-										via Transformers</a></h2>
-                                </header>
-                                <a href="ImageCaptioning.html" class="image fit"><img src="images/imagecaption/1.png" alt="" /></a>
-								<p>Caption: A red and white double decker bus is parked in the street</p>
-								<p>This project centers on developing an image captioning model using computer vision, and natural language processing. The model uses transformer architecture and adjusts various hyperparameters for optimal performance in generating descriptive captions for diverse images.</p>
-                                <ul class="actions special">
-                                    <li><a href="ImageCaptioning.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-							<article>
-                                <header>
-                                    <h2><a href="styletransfer.html">Combining Style Transfer and Super Resolution for High-Resolution Image Generation</h2>
-                                </header>
-                                <a href="styletransfer.html" class="image fit"><img src="images/style/1.jpg" alt="" /></a>
-								<p>This project combines style transfer and Super Resolution Generative Adversarial Network (SRGAN) to achieve high-resolution style transfer images. The style transfer network was modified to use two images, and the low-resolution image generated was passed through an existing SRGAN model. The resulting images achieved interesting high-resolution style transfer results.</p>
-                                <ul class="actions special">
-                                    <li><a href="styletransfer.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-							<article>
-                                <header>
-                                    <h2><a href="tsr.html">TRAFFIC SIGN RECOGNITION USING DEEP NETWORKS AND PYTORCH</h2>
-                                </header>
-                                <a href="tsr.html" class="image fit"><img src="images/tsr/0.png" alt="" /></a>
-								<p>The project is about using deep learning and computer vision techniques for traffic sign recognition, with a focus on exploring different architectures, transfer learning, and data augmentation.</p>
-                                <ul class="actions special">
-                                    <li><a href="tsr.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-							<article>
-                                <header>
-                                    <h2><a href="intrinsic.html">Intrinsic Images by Entropy Minimization</h2>
-                                </header>
-                                <a href="intrinsic.html" class="image fit"><img src="images/intrinsic/1.png" alt="" /></a>
-								<p>The project aimed to recreate a paper on shadow removal from a single image using entropy minimization. The proposed method eliminates the need for camera calibration or multiple images taken under different lighting conditions. The project experimented with different chromaticity spaces and showed that the proposed method is effective in removing shadows from single images.</p>
-                                <ul class="actions special">
-                                    <li><a href="intrinsic.html" class="button">More...</a></li>
-                                </ul>
-                            </article>
-                        </section>
+                    <a href="styletransfer.html" class="research-card animate-fade-up" style="--delay: 0.4s">
+                        <div class="research-image">
+                            <img src="images/style/1.jpg" alt="Style Transfer" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">Generative AI</span>
+                            <h3 class="research-title">Style Transfer + Super Resolution</h3>
+                            <p class="research-description">
+                                Combined style transfer with SRGAN for high-resolution artistic image generation.
+                            </p>
+                        </div>
+                    </a>
 
-					</div>
+                    <a href="tsr.html" class="research-card animate-fade-up" style="--delay: 0.5s">
+                        <div class="research-image">
+                            <img src="images/tsr/0.png" alt="Traffic Sign Recognition" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">Computer Vision</span>
+                            <h3 class="research-title">Traffic Sign Recognition</h3>
+                            <p class="research-description">
+                                Deep learning approach using transfer learning and data augmentation for robust traffic sign classification.
+                            </p>
+                        </div>
+                    </a>
 
-			</div>
+                    <a href="intrinsic.html" class="research-card animate-fade-up" style="--delay: 0.6s">
+                        <div class="research-image">
+                            <img src="images/intrinsic/1.png" alt="Intrinsic Images" loading="lazy">
+                        </div>
+                        <div class="research-content">
+                            <span class="research-category">Image Processing</span>
+                            <h3 class="research-title">Shadow Removal via Entropy Minimization</h3>
+                            <p class="research-description">
+                                Single-image shadow removal using entropy minimization without camera calibration or multiple exposures.
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#projects">Work</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#writing">Writing</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-	</body>
+    <script src="assets/js/app.js"></script>
+</body>
 </html>

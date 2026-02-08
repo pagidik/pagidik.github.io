@@ -1,93 +1,146 @@
-
-<!DOCTYPE HTML>
-<!--
-    Massively by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-    <head>
-        <title>Projects - Kishore's Portfolio</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-                <link rel="stylesheet" href="assets/css/custom.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-        <style>
-            h1 {
-            font-size: 1rem;
-            }
-            h2 {
-            font-size: 1rem;
-            }
-            p {
-            font-size: 1rem;
-            line-height: 1.5;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO LOAM vs SC-LEGO LOAM | Kishore Reddy Pagidi</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .project-detail { padding: var(--space-5xl) 0; }
+        .project-detail-header { margin-bottom: var(--space-3xl); }
+        .project-detail-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-lg); }
+        .project-detail-meta { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-xl); }
+        .project-detail-tag { padding: var(--space-xs) var(--space-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: 0.875rem; }
+        .project-detail-content { max-width: 800px; margin: 0 auto; }
+        .project-detail-content h2 { font-family: var(--font-display); font-size: 1.75rem; margin: var(--space-3xl) 0 var(--space-lg); color: var(--color-text); }
+        .project-detail-content h3 { font-size: 1.25rem; margin: var(--space-2xl) 0 var(--space-md); color: var(--color-text); }
+        .project-detail-content p { margin-bottom: var(--space-lg); color: var(--color-text-secondary); line-height: 1.8; }
+        .project-detail-content img { width: 100%; border-radius: var(--radius-lg); margin: var(--space-xl) 0; background: white; padding: 0.75rem; }
+        .project-detail-content figure { margin: var(--space-2xl) 0; }
+        .project-detail-content figcaption { text-align: center; font-size: 0.875rem; color: var(--color-text-muted); margin-top: var(--space-sm); }
+        .back-link { display: inline-flex; align-items: center; gap: var(--space-sm); color: var(--color-primary); margin-bottom: var(--space-2xl); text-decoration: none; font-weight: 500; }
+        .back-link:hover { text-decoration: underline; }
+        .image-grid { display: grid; gap: var(--space-md); margin: var(--space-xl) 0; }
+        .image-grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
     </style>
 </head>
-    </head>
-    <body class="is-preload">
+<body>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">KP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Work</a></li>
+                <li><a href="index.html#research" class="nav-link">Research</a></li>
+                <li><a href="index.html#writing" class="nav-link">Writing</a></li>
+                <li><a href="index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
 
-        <!-- Wrapper -->
-            <div id="wrapper">
+    <main class="project-detail">
+        <div class="container">
+            <div class="project-detail-content">
+                <a href="index.html#research" class="back-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Back to Research
+                </a>
 
-                <!-- Header -->
-                    <header id="header">
-                        <a href="projects.html" class="logo">Projects</a>
-                    </header>
-
-                <!-- Nav -->
-                    <nav id="nav">
-                        <ul class="links">
-                            <li><a href="index.html">About</a></li>
-                            <li class="active"><a href="projects.html">Projects</a></li>
-                            <li><a href="blog/index.html">Blog</a></li>
-                            <li><a href="/assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
-                        </ul>
-                        <ul class="icons">
-                            <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-                            <li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-                        </ul>
-                    </nav>
-
-                    <!-- Main -->
-                    <div id="main">
-
-                        <!-- Post -->
-                            <section class="post">
-                                <header class="major">
-                                    <h1>A comparitive study on LEGO LOAM and SC-LEGO LOAM</h1>
-                                </header>
-                                
-                                <!-- Text stuff -->
-                                    <p>In a recent study, we compared the results of LEGO LOAM (Laser Optimized and Autonomous Mapping) and SC LEGO LOAM (Simultaneous Localization and Mapping with LEGO LOAM) by collecting data from NUANCE, Northeastern University's autonomous car. Our goal was to determine which method was more effective at creating high-quality 3D maps of complex environments.</p>
-                                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" class="image fit" target="_blank"><img src="images/legoloam/demo32x.gif" alt="" /></a>
-                                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" class="image fit" target="_blank"><img src="images/legoloam/cam0_32x.gif" alt="" /></a>
-                                    <p>To collect the data, we used NUANCE to navigate through a variety of environments, including urban areas and buildings. We equipped the car with laser rangefinders, cameras, and inertial measurement units (IMUs), which allowed it to scan its surroundings and collect data on the distances to nearby objects.</p>
-                                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" class="image fit" target="_blank"><img src="images/legoloam/nuance.jpg" alt="" /></a>
-                                    <p>After we collected the data, I used ICP(Iterative Closest Point) to generate 3D maps. ICP is an algorithm that is often used in the LEGO LOAM method for creating 3D maps of environments. The algorithm is used to align two point clouds, which are sets of points in 3D space that represent the shape of an environment</p>
-                                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" class="image fit" target="_blank"><img src="images/legoloam/odometry.jpg" alt="" /></a>
-                                    <p>The ICP algorithm works by iteratively adjusting the position and orientation of one of the point clouds to minimize the distance between it and the other point cloud. This is done by identifying the closest point in the second point cloud to each point in the first point cloud and minimizing the sum of the squared distances between these points.</p>
-                                    <p>In LEGO LOAM, ICP is used to align the current point cloud, which is generated by the laser rangefinder, with the accumulated point cloud, which is a composite of all the previous scans of the environment. By aligning the current point cloud with the accumulated point cloud, ICP helps to improve the accuracy of the 3D map.</p>
-                                    <p>One of the reasons that SC LEGO LOAM was more effective is that it was able to take advantage of multiple small loop closures. Loop closures occur when the ego vehicle returns to a location it has previously visited, and they are used to improve the accuracy of the 3D map. By performing multiple small loop closures, we were able to significantly improve the quality of the 3D maps created using SC LEGO LOAM.</p>
-                                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" class="image fit" target="_blank"><img src="images/legoloam/seg-total.jpg" alt="" /></a>
-                                    <p>In conclusion, we found that SC LEGO LOAM was generally more effective at creating high-quality 3D maps of complex environments compared to LEGO LOAM. One of the reasons for this was the ability of SC LEGO LOAM to take advantage of multiple small loop closures, which significantly improved the accuracy of the 3D maps. These results demonstrate the potential of SC LEGO LOAM as a powerful tool for creating 3D maps of complex environments and have implications for the development of autonomous systems in the future.</p>
-                                </section>
-
+                <header class="project-detail-header">
+                    <h1 class="project-detail-title">A Comparative Study on LEGO LOAM and SC-LEGO LOAM</h1>
+                    <div class="project-detail-meta">
+                        <span class="project-detail-tag">LiDAR SLAM</span>
+                        <span class="project-detail-tag">Autonomous Vehicles</span>
+                        <span class="project-detail-tag">3D Mapping</span>
                     </div>
+                </header>
 
+                <h2>Introduction</h2>
+                <p>In a recent study, we compared the results of LEGO LOAM (Laser Optimized and Autonomous Mapping) and SC LEGO LOAM (Simultaneous Localization and Mapping with LEGO LOAM) by collecting data from NUANCE, Northeastern University's autonomous car. Our goal was to determine which method was more effective at creating high-quality 3D maps of complex environments.</p>
 
+                <div class="image-grid cols-2">
+                    <figure>
+                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                            <img src="images/legoloam/demo32x.gif" alt="LEGO LOAM Demo">
+                        </a>
+                        <figcaption>LiDAR point cloud mapping visualization</figcaption>
+                    </figure>
+                    <figure>
+                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                            <img src="images/legoloam/cam0_32x.gif" alt="Camera View">
+                        </a>
+                        <figcaption>Corresponding camera view during data collection</figcaption>
+                    </figure>
+                </div>
+
+                <h2>Data Collection</h2>
+                <p>To collect the data, we used NUANCE to navigate through a variety of environments, including urban areas and buildings. We equipped the car with laser rangefinders, cameras, and inertial measurement units (IMUs), which allowed it to scan its surroundings and collect data on the distances to nearby objects.</p>
+
+                <figure>
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                        <img src="images/legoloam/nuance.jpg" alt="NUANCE Autonomous Vehicle">
+                    </a>
+                    <figcaption>NUANCE - Northeastern University's autonomous vehicle used for data collection</figcaption>
+                </figure>
+
+                <h2>ICP Algorithm</h2>
+                <p>After we collected the data, I used ICP (Iterative Closest Point) to generate 3D maps. ICP is an algorithm that is often used in the LEGO LOAM method for creating 3D maps of environments. The algorithm is used to align two point clouds, which are sets of points in 3D space that represent the shape of an environment.</p>
+
+                <figure>
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                        <img src="images/legoloam/odometry.jpg" alt="Odometry Visualization">
+                    </a>
+                    <figcaption>Odometry estimation using ICP alignment</figcaption>
+                </figure>
+
+                <p>The ICP algorithm works by iteratively adjusting the position and orientation of one of the point clouds to minimize the distance between it and the other point cloud. This is done by identifying the closest point in the second point cloud to each point in the first point cloud and minimizing the sum of the squared distances between these points.</p>
+
+                <p>In LEGO LOAM, ICP is used to align the current point cloud, which is generated by the laser rangefinder, with the accumulated point cloud, which is a composite of all the previous scans of the environment. By aligning the current point cloud with the accumulated point cloud, ICP helps to improve the accuracy of the 3D map.</p>
+
+                <h2>Results and Analysis</h2>
+                <p>One of the reasons that SC LEGO LOAM was more effective is that it was able to take advantage of multiple small loop closures. Loop closures occur when the ego vehicle returns to a location it has previously visited, and they are used to improve the accuracy of the 3D map. By performing multiple small loop closures, we were able to significantly improve the quality of the 3D maps created using SC LEGO LOAM.</p>
+
+                <figure>
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                        <img src="images/legoloam/seg-total.jpg" alt="Segmented Point Cloud">
+                    </a>
+                    <figcaption>Complete segmented point cloud map generated using SC-LEGO LOAM</figcaption>
+                </figure>
+
+                <h2>Conclusion</h2>
+                <p>In conclusion, we found that SC LEGO LOAM was generally more effective at creating high-quality 3D maps of complex environments compared to LEGO LOAM. One of the reasons for this was the ability of SC LEGO LOAM to take advantage of multiple small loop closures, which significantly improved the accuracy of the 3D maps. These results demonstrate the potential of SC LEGO LOAM as a powerful tool for creating 3D maps of complex environments and have implications for the development of autonomous systems in the future.</p>
             </div>
+        </div>
+    </main>
 
-        <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/jquery.scrollex.min.js"></script>
-            <script src="assets/js/jquery.scrolly.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#projects">Work</a>
+                    <a href="index.html#research">Research</a>
+                    <a href="index.html#writing">Writing</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    </body>
+    <script src="assets/js/app.js"></script>
+</body>
 </html>

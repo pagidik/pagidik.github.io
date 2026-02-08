@@ -1,0 +1,20 @@
+# Image prompts (contains generation prompts, not needed in repo)
+images/image prompts.txt
+
+# Artifact files
+nul
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temp files
+*.tmp
+*.bak

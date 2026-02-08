@@ -3,85 +3,812 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kishore's Portfolio</title>
+    <title>Kishore Reddy Pagidi | AI Product Manager</title>
+    <meta name="description" content="AI Product Manager at SOLIDWORKS - Building the future of AI-powered design. Strategic product leadership, AI innovation, and organizational transformation.">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body { margin: 0; overflow: hidden; background: #111; color:#eee; font-family: 'Comic Neue', Arial, sans-serif; }
-        #overlay { position: absolute; top:0; left:0; width:100%; text-align:center; padding:20px; pointer-events:none; }
-        #overlay h1 { margin:0; font-size:3vw; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Favicon - using inline SVG for the KP logo -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-<canvas id="webgl"></canvas>
-<div id="overlay">
-    <h1>Kishore's Portfolio</h1>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
-    camera.position.z = 5;
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">KP</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Work</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#writing" class="nav-link">Writing</a></li>
+                <li><a href="#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl'), antialias:true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-up">
+                    <span class="badge-dot"></span>
+                    AI Product Manager at SOLIDWORKS
+                </div>
+                <p class="hero-name animate-fade-up" style="--delay: 0.05s">Kishore Reddy Pagidi</p>
+                <h1 class="hero-title animate-fade-up" style="--delay: 0.1s">
+                    Building the Future of<br>
+                    <span class="gradient-text">AI-Powered Design</span>
+                </h1>
+                <p class="hero-description animate-fade-up" style="--delay: 0.2s">
+                    I lead AI strategy and product innovation at SOLIDWORKS, transforming how millions of engineers
+                    create through conversational AI, automation, and intelligent workflows. Early advocate.
+                    Strategic thinker. Builder of what's next.
+                </p>
+                <div class="hero-cta animate-fade-up" style="--delay: 0.3s">
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+                </div>
+            </div>
+            <div class="hero-visual animate-fade-up" style="--delay: 0.4s">
+                <div class="hero-card">
+                    <div class="hero-card-content">
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">3.7M</span>
+                                <span class="stat-label">CAD Professionals Impacted</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-count="200">0</span>
+                                <span class="stat-label">AI Projects Managed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-count="60">0</span>
+                                <span class="stat-label">Enterprise Customers</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-fade-up">About</span>
+                <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
+                    Transforming Industries Through<br>Strategic AI Leadership
+                </h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text animate-fade-up" style="--delay: 0.2s">
+                    <p class="lead">
+                        As a Generative Experiences Portfolio Manager at SOLIDWORKS (Dassault Systemes), I lead AI-powered
+                        product innovation for design software used by millions of engineers worldwide.
+                    </p>
+                    <p>
+                        My journey started in robotics and autonomous vehicles - working on HD maps at
+                        <strong>Mercedes-Benz R&D</strong>, ADAS systems at <strong>Suzuki</strong>, and earning my
+                        Master's in Robotics from <strong>Northeastern University</strong>. That technical foundation
+                        now drives how I build AI products.
+                    </p>
+                    <p>
+                        At SOLIDWORKS, I've built the AI strategy from the ground up - from coining and trademarking
+                        <strong>"Vibe CADing"</strong> to establishing a 60+ member customer advisory board,
+                        from managing 200+ AI projects to filing patents on novel AI applications.
+                    </p>
+                    <p>
+                        I saw conversational AI's potential for CAD before it was mainstream, and I've been
+                        building toward that vision ever since.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <div class="highlight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <circle cx="12" cy="12" r="10"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Strategic Vision</h4>
+                                <p>Built 3-6 year AI roadmap for SOLIDWORKS product line</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <div class="highlight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Cross-Functional Leadership</h4>
+                                <p>Collaborate across engineering, sales, marketing, and executive teams</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <div class="highlight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Innovation Focus</h4>
+                                <p>Filed multiple patents on AI-driven design and automation</p>
+                            </div>
+                        </div>
+                        <div class="highlight">
+                            <div class="highlight-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"/>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Technical Foundation</h4>
+                                <p>MS Robotics, experience in autonomous vehicles and computer vision</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image animate-fade-up" style="--delay: 0.3s">
+                    <div class="image-frame">
+                        <img src="images/assets-website/8.jpg" alt="Kishore Pagidi" loading="lazy">
+                        <div class="image-decoration"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    const links = [
-        { text: 'About', url: 'index_backup.html', color: 0xff5f6d, position: [-3,0,0] },
-        { text: 'Projects', url: 'projects.html', color: 0x2575fc, position: [-1,0,0] },
-        { text: 'Blog', url: 'blog/index.html', color: 0xffd700, position: [1,0,0] },
-        { text: 'Resume', url: 'assets/Kishore_Resume.pdf', color: 0x8a2be2, position: [3,0,0] }
-    ];
+    <!-- Projects Section -->
+    <section class="projects section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-fade-up">Featured Work</span>
+                <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
+                    Projects That Define<br>the Future of Design
+                </h2>
+                <p class="section-description animate-fade-up" style="--delay: 0.2s">
+                    From trademarked concepts to enterprise solutions, each project represents
+                    a step toward reimagining how engineers interact with design tools.
+                </p>
+            </div>
 
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    const cubes = [];
+            <div class="projects-grid">
+                <!-- Project 1: Vibe CADing -->
+                <article class="project-card project-card--featured animate-fade-up" style="--delay: 0.1s">
+                    <div class="project-image">
+                        <img src="images/assets-website/2.jpg" alt="Vibe CADing - AI-driven design experience" loading="lazy">
+                        <div class="project-badge">Trademarked</div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">AI Vision & Strategy</span>
+                        <h3 class="project-title">Vibe CADing&trade;</h3>
+                        <p class="project-description">
+                            Coined and trademarked this term to define the future of AI-driven design experience.
+                            Created vision videos demonstrating how conversational AI will transform CAD workflows,
+                            setting the strategic direction for SOLIDWORKS AI initiatives.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-impact">
+                                <span class="impact-label">Impact</span>
+                                <span class="impact-value">Defining industry vocabulary for AI + CAD</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Conversational AI</span>
+                            <span class="tag">Product Vision</span>
+                            <span class="tag">Strategic Branding</span>
+                        </div>
+                    </div>
+                </article>
 
-    links.forEach(link => {
-        const geometry = new THREE.BoxGeometry(1,1,1);
-        const material = new THREE.MeshStandardMaterial({ color: link.color });
-        const cube = new THREE.Mesh(geometry, material);
-        cube.position.set(...link.position);
-        cube.userData.url = link.url;
-        scene.add(cube);
-        cubes.push(cube);
-    });
+                <!-- Project 2: AI Customer Advisory Board -->
+                <article class="project-card animate-fade-up" style="--delay: 0.2s">
+                    <div class="project-image">
+                        <img src="images/assets-website/3.jpg" alt="AI Customer Advisory Board" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Customer Development</span>
+                        <h3 class="project-title">AI Customer Advisory Board</h3>
+                        <p class="project-description">
+                            Built from scratch to 60+ enterprise customers. Established a framework for
+                            gathering insights and validating AI product strategy through regular meetings
+                            that directly drive product roadmap decisions.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="stat-value">60+</span>
+                                    <span class="stat-label">Enterprise Customers</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="stat-value">Monthly</span>
+                                    <span class="stat-label">Strategic Meetings</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Customer Research</span>
+                            <span class="tag">Product Strategy</span>
+                            <span class="tag">Enterprise</span>
+                        </div>
+                    </div>
+                </article>
 
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(2,2,5);
-    scene.add(light);
+                <!-- Project 3: Internal Automation Tools -->
+                <article class="project-card animate-fade-up" style="--delay: 0.3s">
+                    <div class="project-image">
+                        <img src="images/assets-website/4.jpg" alt="Internal Automation Tools" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Automation & Efficiency</span>
+                        <h3 class="project-title">Internal Automation Tools</h3>
+                        <p class="project-description">
+                            Built suite of AI-powered workflow tools: What's New documentation agent,
+                            sales forecasting tool saving 4 hours/week for leadership, and wiki migration
+                            tools for knowledge management.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="stat-value">4 hrs</span>
+                                    <span class="stat-label">Saved Weekly</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="stat-value">3</span>
+                                    <span class="stat-label">Tools Deployed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">AI Agents</span>
+                            <span class="tag">Process Automation</span>
+                            <span class="tag">Leadership Tools</span>
+                        </div>
+                    </div>
+                </article>
 
-    function onMouseMove(event){
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-    }
-    window.addEventListener('mousemove', onMouseMove, false);
+                <!-- Project 4: AI Strategy & Encyclopedia -->
+                <article class="project-card animate-fade-up" style="--delay: 0.4s">
+                    <div class="project-image">
+                        <img src="images/assets-website/5.jpg" alt="AI Strategy & Encyclopedia" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Strategic Planning</span>
+                        <h3 class="project-title">AI Strategy & Encyclopedia</h3>
+                        <p class="project-description">
+                            Built comprehensive 3-6 year AI roadmap for SOLIDWORKS. Managing 200+ AI projects
+                            across the organization with competitive analysis and market positioning to guide
+                            strategic decisions.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="stat-value">200+</span>
+                                    <span class="stat-label">Projects Managed</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="stat-value">3-6 yr</span>
+                                    <span class="stat-label">Roadmap Horizon</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Roadmapping</span>
+                            <span class="tag">Competitive Analysis</span>
+                            <span class="tag">Portfolio Management</span>
+                        </div>
+                    </div>
+                </article>
 
-    window.addEventListener('click', () => {
-        raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(cubes);
-        if(intersects.length > 0){
-            const url = intersects[0].object.userData.url;
-            if(url) window.location.href = url;
-        }
-    });
+                <!-- Project 5: Patent Filings -->
+                <article class="project-card animate-fade-up" style="--delay: 0.5s">
+                    <div class="project-image">
+                        <img src="images/assets-website/6.jpg" alt="Patent Filings" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Innovation & IP</span>
+                        <h3 class="project-title">Patent Filings</h3>
+                        <p class="project-description">
+                            Filed multiple patents on novel AI applications: AI-driven material assignment
+                            for CAD, path planning tools for robotics, and computer vision techniques
+                            for CAD workflows.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-impact">
+                                <span class="impact-label">Areas</span>
+                                <span class="impact-value">Materials AI, Robotics, Computer Vision</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Patents</span>
+                            <span class="tag">Novel Research</span>
+                            <span class="tag">Technical Innovation</span>
+                        </div>
+                    </div>
+                </article>
 
-    function animate(){
-        requestAnimationFrame(animate);
-        cubes.forEach(c => { c.rotation.x += 0.01; c.rotation.y += 0.01; });
-        raycaster.setFromCamera(mouse, camera);
-        renderer.render(scene, camera);
-    }
-    animate();
-</script>
+                <!-- Project 6: Educational Initiatives -->
+                <article class="project-card animate-fade-up" style="--delay: 0.6s">
+                    <div class="project-image">
+                        <img src="images/assets-website/7.jpg" alt="Educational Initiatives" loading="lazy">
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Knowledge Sharing</span>
+                        <h3 class="project-title">Educational Initiatives</h3>
+                        <p class="project-description">
+                            Created AI Pulse series for bi-weekly knowledge sharing. Led DS-wide webinar
+                            with 800+ attendees. Established AI Champions program to empower global
+                            sales teams with AI expertise.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <span class="stat-value">800+</span>
+                                    <span class="stat-label">Webinar Attendees</span>
+                                </div>
+                                <div class="project-stat">
+                                    <span class="stat-value">Global</span>
+                                    <span class="stat-label">AI Champions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">AI Education</span>
+                            <span class="tag">Sales Enablement</span>
+                            <span class="tag">Thought Leadership</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact section" id="impact">
+        <div class="container">
+            <div class="section-header section-header--center">
+                <span class="section-label animate-fade-up">Impact</span>
+                <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
+                    Measurable Results,<br>Lasting Transformation
+                </h2>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card impact-card--featured animate-fade-up" style="--delay: 0.1s">
+                    <div class="impact-number">3.7M</div>
+                    <div class="impact-plus"></div>
+                    <div class="impact-label">CAD Professionals</div>
+                    <p class="impact-description">Global SOLIDWORKS user base impacted by AI roadmap</p>
+                </div>
+                <div class="impact-card animate-fade-up" style="--delay: 0.2s">
+                    <div class="impact-number" data-count="200">0</div>
+                    <div class="impact-plus">+</div>
+                    <div class="impact-label">AI Projects Managed</div>
+                    <p class="impact-description">Across SOLIDWORKS organization</p>
+                </div>
+                <div class="impact-card animate-fade-up" style="--delay: 0.3s">
+                    <div class="impact-number" data-count="60">0</div>
+                    <div class="impact-plus">+</div>
+                    <div class="impact-label">Enterprise Customers</div>
+                    <p class="impact-description">In AI Advisory Board</p>
+                </div>
+                <div class="impact-card animate-fade-up" style="--delay: 0.4s">
+                    <div class="impact-number" data-count="800">0</div>
+                    <div class="impact-plus">+</div>
+                    <div class="impact-label">Webinar Attendees</div>
+                    <p class="impact-description">DS-wide knowledge sharing</p>
+                </div>
+                <div class="impact-card animate-fade-up" style="--delay: 0.5s">
+                    <div class="impact-number">3-6</div>
+                    <div class="impact-plus">yr</div>
+                    <div class="impact-label">AI Roadmap</div>
+                    <p class="impact-description">Strategic vision built</p>
+                </div>
+                <div class="impact-card animate-fade-up" style="--delay: 0.6s">
+                    <div class="impact-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                    </div>
+                    <div class="impact-label">Patents Filed</div>
+                    <p class="impact-description">Novel AI applications in CAD & robotics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research & Technical Projects Section -->
+    <section class="research section" id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-fade-up">Research & Technical Work</span>
+                <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
+                    From Robotics to AI:<br>Building the Foundation
+                </h2>
+                <p class="section-description animate-fade-up" style="--delay: 0.2s">
+                    Before leading AI product strategy, I built deep technical expertise in robotics,
+                    computer vision, and autonomous systems at Northeastern University and Mercedes-Benz R&D.
+                </p>
+            </div>
+
+            <!-- Featured Publication -->
+            <a href="corl-paper.html" class="research-featured animate-fade-up" style="--delay: 0.1s">
+                <div class="research-featured-image">
+                    <img src="images/corl/method.png" alt="Interaction Warping method overview" loading="lazy">
+                </div>
+                <div class="research-featured-body">
+                    <div class="research-featured-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        Published at CoRL 2023
+                    </div>
+                    <h3 class="research-featured-title">One-shot Imitation Learning via Interaction Warping</h3>
+                    <p class="research-featured-authors">
+                        O. Biza, S. Thompson, <strong>K.R. Pagidi</strong>, A. Kumar, E. van der Pol, R. Walters, T. Kipf, J-W. van de Meent, L.L.S. Wong, R. Platt
+                    </p>
+                    <p class="research-featured-description">
+                        Teaching robots to manipulate objects they've never seen from a single demonstration.
+                        We introduced Interaction Warping &mdash; a method that decouples learned actions from
+                        specific object geometry, enabling one-shot generalization across novel objects.
+                    </p>
+                    <div class="research-featured-venues">
+                        <span>Northeastern University</span>
+                        <span>Google DeepMind</span>
+                        <span>Microsoft Research</span>
+                    </div>
+                </div>
+                <div class="research-featured-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+
+            <div class="research-grid">
+                <a href="3dobject.html" class="research-card animate-fade-up" style="--delay: 0.2s">
+                    <div class="research-image">
+                        <img src="images/lidarOD/1.png" alt="3D Object Detection" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Autonomous Vehicles</span>
+                        <h3 class="research-title">3D Object Detection</h3>
+                        <p class="research-description">
+                            LiDAR-based 3D object detection using voxelization and bird's eye view for autonomous driving applications.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="legoloam.html" class="research-card animate-fade-up" style="--delay: 0.2s">
+                    <div class="research-image">
+                        <img src="images/legoloam/demo32x.gif" alt="LEGO LOAM" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">SLAM</span>
+                        <h3 class="research-title">LEGO LOAM vs SC-LEGO LOAM</h3>
+                        <p class="research-description">
+                            Comparative study on LiDAR odometry and mapping using data from NUANCE autonomous vehicle platform.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="ImageCaptioning.html" class="research-card animate-fade-up" style="--delay: 0.3s">
+                    <div class="research-image">
+                        <img src="images/imagecaption/1.png" alt="Image Captioning" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Deep Learning</span>
+                        <h3 class="research-title">Image Captioning via Transformers</h3>
+                        <p class="research-description">
+                            Transformer-based image captioning model combining computer vision and NLP for descriptive caption generation.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="styletransfer.html" class="research-card animate-fade-up" style="--delay: 0.4s">
+                    <div class="research-image">
+                        <img src="images/style/1.jpg" alt="Style Transfer" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Generative AI</span>
+                        <h3 class="research-title">Style Transfer + Super Resolution</h3>
+                        <p class="research-description">
+                            Combined style transfer with SRGAN for high-resolution artistic image generation.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="tsr.html" class="research-card animate-fade-up" style="--delay: 0.5s">
+                    <div class="research-image">
+                        <img src="images/tsr/0.png" alt="Traffic Sign Recognition" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Computer Vision</span>
+                        <h3 class="research-title">Traffic Sign Recognition</h3>
+                        <p class="research-description">
+                            Deep learning approach using transfer learning and data augmentation for robust traffic sign classification.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="intrinsic.html" class="research-card animate-fade-up" style="--delay: 0.6s">
+                    <div class="research-image">
+                        <img src="images/intrinsic/1.png" alt="Intrinsic Images" loading="lazy">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-category">Image Processing</span>
+                        <h3 class="research-title">Shadow Removal via Entropy Minimization</h3>
+                        <p class="research-description">
+                            Single-image shadow removal using entropy minimization without camera calibration or multiple exposures.
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="research-cta animate-fade-up" style="--delay: 0.7s">
+                <a href="projects.html" class="btn btn-secondary">
+                    View All Projects
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="https://scholar.google.com/citations?user=HM4-fvoAAAAJ" class="btn btn-secondary" target="_blank" rel="noopener">
+                    Google Scholar
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writing Section -->
+    <section class="writing section" id="writing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label animate-fade-up">Writing & Speaking</span>
+                <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
+                    Sharing Knowledge,<br>Shaping the Conversation
+                </h2>
+                <p class="section-description animate-fade-up" style="--delay: 0.2s">
+                    I write about AI, robotics, and the future of design on Medium and the SOLIDWORKS Blog.
+                </p>
+            </div>
+
+            <div class="writing-grid">
+                <a href="https://blogs.solidworks.com/solidworksblog/2026/01/augmented-design-how-ai-is-quietly-changing-daily-life-for-mechanical-engineers.html" class="writing-card writing-card--featured animate-fade-up" style="--delay: 0.3s" target="_blank" rel="noopener">
+                    <div class="writing-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                            <path d="M2 2l7.586 7.586"/>
+                            <circle cx="11" cy="11" r="2"/>
+                        </svg>
+                    </div>
+                    <span class="writing-type">SOLIDWORKS Blog</span>
+                    <h3 class="writing-title">Augmented Design: How AI is Quietly Changing Daily Life for Mechanical Engineers</h3>
+                    <p class="writing-description">
+                        Exploring how AI is transforming the day-to-day workflow of mechanical engineers through subtle but powerful augmentations.
+                    </p>
+                    <div class="writing-meta">
+                        <span>January 2026</span>
+                        <span>Featured Article</span>
+                    </div>
+                </a>
+
+                <a href="https://medium.com/@kishorereddy097/from-segments-to-skills-teaching-robots-to-manipulate-objects-theyve-never-seen-6cac05ba5d59" class="writing-card animate-fade-up" style="--delay: 0.4s" target="_blank" rel="noopener">
+                    <div class="writing-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="13" x2="15" y2="13"/>
+                            <line x1="9" y1="17" x2="12" y2="17"/>
+                        </svg>
+                    </div>
+                    <span class="writing-type">Medium</span>
+                    <h3 class="writing-title">From Segments to Skills: Teaching Robots to Manipulate Objects</h3>
+                    <p class="writing-description">
+                        Deep dive into how robots can learn to manipulate objects they've never seen before using segmentation and skill transfer.
+                    </p>
+                    <div class="writing-meta">
+                        <span>Robotics</span>
+                        <span>AI Research</span>
+                    </div>
+                </a>
+
+                <a href="https://blogs.solidworks.com/solidworksblog/2025/08/skip-the-blank-sheet-discover-the-generative-drawing-experience-in-solidworks.html" class="writing-card animate-fade-up" style="--delay: 0.5s" target="_blank" rel="noopener">
+                    <div class="writing-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <span class="writing-type">SOLIDWORKS Blog</span>
+                    <h3 class="writing-title">Skip the Blank Sheet: Generative Drawing in SOLIDWORKS</h3>
+                    <p class="writing-description">
+                        Introducing the AI-powered Auto Generate Drawing feature that creates views and dimensions automatically.
+                    </p>
+                    <div class="writing-meta">
+                        <span>August 2025</span>
+                        <span>Product Feature</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="writing-cta animate-fade-up" style="--delay: 0.6s">
+                <a href="https://medium.com/@kishorereddy097" class="btn btn-secondary" target="_blank" rel="noopener">
+                    Read on Medium
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content animate-fade-up">
+                    <span class="section-label">Get in Touch</span>
+                    <h2 class="contact-title">Let's Build<br>Something Great</h2>
+                    <p class="contact-description">
+                        Whether you're interested in AI strategy, product innovation, or just want
+                        to discuss the future of design technology, I'd love to connect.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/kishore005/" class="contact-link" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">LinkedIn</span>
+                                <span class="contact-link-value">Connect with me</span>
+                            </div>
+                            <svg class="contact-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/pagidik" class="contact-link" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">GitHub</span>
+                                <span class="contact-link-value">View my code</span>
+                            </div>
+                            <svg class="contact-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                            </svg>
+                        </a>
+                        <a href="https://medium.com/@kishorereddy097" class="contact-link" target="_blank" rel="noopener">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">Medium</span>
+                                <span class="contact-link-value">Read my articles</span>
+                            </div>
+                            <svg class="contact-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:kishore.pagidi@outlook.com" class="contact-link">
+                            <div class="contact-link-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <span class="contact-link-label">Email</span>
+                                <span class="contact-link-value">kishore.pagidi@outlook.com</span>
+                            </div>
+                            <svg class="contact-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-visual animate-fade-up" style="--delay: 0.2s">
+                    <div class="contact-card">
+                        <div class="contact-card-pattern"></div>
+                        <div class="contact-card-content">
+                            <p class="contact-quote">
+                                "The best way to predict the future is to build it."
+                            </p>
+                            <span class="contact-resume">
+                                <a href="assets/Kishore_Resume.pdf" target="_blank" class="btn btn-primary">
+                                    Download Resume
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                        <polyline points="7 10 12 15 17 10"/>
+                                        <line x1="12" y1="15" x2="12" y2="3"/>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Work</a>
+                    <a href="#research">Research</a>
+                    <a href="#writing">Writing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/kishore005/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/pagidik" target="_blank" rel="noopener" aria-label="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@kishorereddy097" target="_blank" rel="noopener" aria-label="Medium">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
-

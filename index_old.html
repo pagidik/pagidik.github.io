@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishore's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; overflow: hidden; background: #111; color:#eee; font-family: 'Comic Neue', Arial, sans-serif; }
+        #overlay { position: absolute; top:0; left:0; width:100%; text-align:center; padding:20px; pointer-events:none; }
+        #overlay h1 { margin:0; font-size:3vw; }
+    </style>
+</head>
+<body>
+<canvas id="webgl"></canvas>
+<div id="overlay">
+    <h1>Kishore's Portfolio</h1>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
+    camera.position.z = 5;
+
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl'), antialias:true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    const links = [
+        { text: 'About', url: 'index_backup.html', color: 0xff5f6d, position: [-3,0,0] },
+        { text: 'Projects', url: 'projects.html', color: 0x2575fc, position: [-1,0,0] },
+        { text: 'Blog', url: 'blog/index.html', color: 0xffd700, position: [1,0,0] },
+        { text: 'Resume', url: 'assets/Kishore_Resume.pdf', color: 0x8a2be2, position: [3,0,0] }
+    ];
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const cubes = [];
+
+    links.forEach(link => {
+        const geometry = new THREE.BoxGeometry(1,1,1);
+        const material = new THREE.MeshStandardMaterial({ color: link.color });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(...link.position);
+        cube.userData.url = link.url;
+        scene.add(cube);
+        cubes.push(cube);
+    });
+
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(2,2,5);
+    scene.add(light);
+
+    function onMouseMove(event){
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    }
+    window.addEventListener('mousemove', onMouseMove, false);
+
+    window.addEventListener('click', () => {
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(cubes);
+        if(intersects.length > 0){
+            const url = intersects[0].object.userData.url;
+            if(url) window.location.href = url;
+        }
+    });
+
+    function animate(){
+        requestAnimationFrame(animate);
+        cubes.forEach(c => { c.rotation.x += 0.01; c.rotation.y += 0.01; });
+        raycaster.setFromCamera(mouse, camera);
+        renderer.render(scene, camera);
+    }
+    animate();
+</script>
+</body>
+</html>
+

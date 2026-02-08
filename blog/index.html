@@ -1,51 +1,104 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Blog - Kishore's Portfolio</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/custom.css" />
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Kishore Reddy Pagidi</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .blog-page { padding: var(--space-5xl) 0; min-height: 60vh; }
+        .blog-header { text-align: center; margin-bottom: var(--space-4xl); }
+        .blog-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); margin-bottom: var(--space-lg); }
+        .blog-description { color: var(--color-text-secondary); max-width: 600px; margin: 0 auto var(--space-2xl); }
+        .blog-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); }
+        .writing-list { display: grid; gap: var(--space-xl); max-width: 800px; margin: 0 auto; }
+        .writing-item { display: block; padding: var(--space-xl); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); text-decoration: none; transition: all var(--transition-base); }
+        .writing-item:hover { border-color: var(--color-primary); transform: translateY(-4px); }
+        .writing-item-source { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: var(--space-sm); }
+        .writing-item-title { font-family: var(--font-display); font-size: 1.25rem; color: var(--color-text); margin-bottom: var(--space-sm); }
+        .writing-item-excerpt { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; }
+    </style>
 </head>
 <body>
-    <div id="wrapper">
-        <header id="header">
-            <a href="../index.html" class="logo">PORTFOLIO</a>
-        </header>
-        <nav id="nav">
-            <ul class="links">
-                <li><a href="../index.html">About</a></li>
-                <li><a href="../projects.html">Projects</a></li>
-                <li class="active"><a href="index.html">Blog</a></li>
-                <li><a href="../assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">KP</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Work</a></li>
+                <li><a href="../index.html#research" class="nav-link">Research</a></li>
+                <li><a href="../index.html#writing" class="nav-link">Writing</a></li>
+                <li><a href="../index.html#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
             </ul>
-            <ul class="icons">
-                <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-            </ul>
-        </nav>
-        <div id="main">
-            <section class="posts">
-                <article>
-                    <header>
-                        <span class="date">July 1, 2023</span>
-                        <h2><a href="first-post.html">Welcome to my new blog</a></h2>
-                    </header>
-                    <a href="first-post.html" class="image fit"><img src="../images/pic_dp.jpg" alt="" /></a>
-                    <p>This is a sample blog post. Replace it with your own content by creating new HTML files in this folder.</p>
-                    <ul class="actions special">
-                        <li><a href="first-post.html" class="button">Read More</a></li>
-                    </ul>
-                </article>
-            </section>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-        <footer id="footer">
-            <ul class="icons">
-                <li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-                <li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-            </ul>
-        </footer>
-    </div>
+    </nav>
+
+    <main class="blog-page">
+        <div class="container">
+            <header class="blog-header">
+                <h1 class="blog-title">Writing & Insights</h1>
+                <p class="blog-description">
+                    I write about AI, robotics, product strategy, and the future of design technology.
+                    Find my latest articles on Medium and the SOLIDWORKS Blog.
+                </p>
+                <div class="blog-cta">
+                    <a href="https://medium.com/@kishorereddy097" class="btn btn-primary" target="_blank" rel="noopener">
+                        Read on Medium
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                    </a>
+                </div>
+            </header>
+
+            <div class="writing-list">
+                <a href="https://blogs.solidworks.com/solidworksblog/2026/01/augmented-design-how-ai-is-quietly-changing-daily-life-for-mechanical-engineers.html" class="writing-item" target="_blank" rel="noopener">
+                    <span class="writing-item-source">SOLIDWORKS Blog</span>
+                    <h2 class="writing-item-title">Augmented Design: How AI is Quietly Changing Daily Life for Mechanical Engineers</h2>
+                    <p class="writing-item-excerpt">Exploring how AI is transforming the day-to-day workflow of mechanical engineers through subtle but powerful augmentations.</p>
+                </a>
+
+                <a href="https://medium.com/@kishorereddy097/from-segments-to-skills-teaching-robots-to-manipulate-objects-theyve-never-seen-6cac05ba5d59" class="writing-item" target="_blank" rel="noopener">
+                    <span class="writing-item-source">Medium</span>
+                    <h2 class="writing-item-title">From Segments to Skills: Teaching Robots to Manipulate Objects They've Never Seen</h2>
+                    <p class="writing-item-excerpt">Deep dive into how robots can learn to manipulate objects they've never seen before using segmentation and skill transfer.</p>
+                </a>
+
+                <a href="https://blogs.solidworks.com/solidworksblog/2025/08/skip-the-blank-sheet-discover-the-generative-drawing-experience-in-solidworks.html" class="writing-item" target="_blank" rel="noopener">
+                    <span class="writing-item-source">SOLIDWORKS Blog</span>
+                    <h2 class="writing-item-title">Skip the Blank Sheet: Generative Drawing in SOLIDWORKS</h2>
+                    <p class="writing-item-excerpt">Introducing the AI-powered Auto Generate Drawing feature that creates views and dimensions automatically.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">KP</span>
+                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html#about">About</a>
+                    <a href="../index.html#projects">Work</a>
+                    <a href="../index.html#research">Research</a>
+                    <a href="../index.html#writing">Writing</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kishore Pagidi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>
