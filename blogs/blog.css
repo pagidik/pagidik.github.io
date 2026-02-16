@@ -450,6 +450,28 @@ body.blog-site {
     color: var(--text-secondary);
 }
 
+.article-body figure {
+    margin: 1.35rem 0 1.6rem;
+}
+
+.article-body figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--alpha-bg);
+}
+
+.article-body figcaption {
+    margin-top: 0.5rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
 .article-body strong {
     color: var(--text);
     font-weight: 600;
