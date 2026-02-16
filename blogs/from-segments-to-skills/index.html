@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Kishore Reddy Pagidi</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Benne&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../blog.css">
+</head>
+<body class="blog-site" data-theme="light" data-post-slug="from-segments-to-skills">
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <header class="blog-nav">
+        <div class="nav-inner">
+            <a href="../../index.html" class="nav-title">Kishore Pagidi</a>
+            <div class="nav-actions">
+                <a href="../" class="nav-link-secondary">All Blogs</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" type="button">
+                    <span id="theme-icon">Light</span>
+                </button>
+                <button class="nav-toggle" id="menu-toggle" aria-label="Open menu" type="button">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+    <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <button class="mobile-drawer-close" id="drawer-close" aria-label="Close menu" type="button">&times;</button>
+        <div class="mobile-drawer-title">Navigate</div>
+        <ul class="mobile-drawer-links">
+            <li><a href="../">All Blogs</a></li>
+            <li><a href="../../index.html#about">About</a></li>
+            <li><a href="../../index.html#projects">Work</a></li>
+            <li><a href="../../index.html#research">Research</a></li>
+            <li><a href="../../index.html#writing">Writing</a></li>
+        </ul>
+    </aside>
+
+    <main class="content">
+        <article class="chapter" id="post-article">
+            <span class="chapter-deco-num" id="post-index">01</span>
+            <div class="chapter-label" id="post-source">Source</div>
+            <h1 class="post-title" id="post-title">Loading post...</h1>
+            <p class="post-excerpt" id="post-excerpt"></p>
+            <div class="post-meta">
+                <span id="post-date">-</span>
+                <span id="post-read-time">-</span>
+            </div>
+            <div class="chapter-actions">
+                <a href="../">Back to all blogs</a>
+                <a id="post-source-link" href="#" target="_blank" rel="noopener noreferrer">Read original source</a>
+            </div>
+            <div class="article-body" id="post-content"></div>
+        </article>
+    </main>
+
+    <hr class="section-rule">
+
+    <section class="toc-section">
+        <h2>More Writing</h2>
+        <ol class="toc-list" id="other-posts"></ol>
+    </section>
+
+    <footer class="page-footer">
+        <p>&copy; <span id="blog-year">2026</span> Kishore Pagidi. All rights reserved.</p>
+    </footer>
+
+    <script src="../blog-data.js"></script>
+    <script src="../blog.js"></script>
+</body>
+</html>

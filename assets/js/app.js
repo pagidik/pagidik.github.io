@@ -144,6 +144,30 @@
     }
 
     // =========================================================================
+    // FILE PROTOCOL LINK COMPATIBILITY
+    // =========================================================================
+
+    function initFileProtocolBlogLinks() {
+        if (window.location.protocol !== 'file:') {
+            return;
+        }
+
+        document.querySelectorAll('a[href^="blogs/"]').forEach((link) => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+
+            if (href === 'blogs/' || href === 'blogs') {
+                link.setAttribute('href', 'blogs/index.html');
+                return;
+            }
+
+            if (/^blogs\/[^/?#]+\/$/.test(href)) {
+                link.setAttribute('href', `${href}index.html`);
+            }
+        });
+    }
+
+    // =========================================================================
     // ACTIVE NAV LINK HIGHLIGHTING
     // =========================================================================
 
@@ -279,6 +303,7 @@
         initScrollAnimations();
         initCounters();
         initSmoothScroll();
+        initFileProtocolBlogLinks();
         initActiveNavHighlight();
         initProjectCardEffects();
         initHeroParallax();

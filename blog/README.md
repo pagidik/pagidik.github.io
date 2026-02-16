@@ -1,3 +1,8 @@
-# Blog Instructions
+# Legacy Blog Route
 
-Add new posts by creating HTML files in this folder. Each post should include the navigation header so visitors can return to the main site. Link the posts from `blog/index.html` by adding a new `<article>` block similar to the sample provided.
+`/blog` is now a compatibility route that redirects to `/blogs`.
+
+Manage blog content from the `/blogs` directory:
+- `blogs/index.html` (listing page)
+- `blogs/<slug>/index.html` (post routes)
+- `blogs/blog-data.js` and `blogs/blog.js` (shared data + rendering)
