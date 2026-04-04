@@ -3,7 +3,14 @@
 
     const STORAGE_KEY = 'kp-blog-theme';
     const VALID_THEMES = new Set(['dark', 'light']);
-    const posts = Array.isArray(window.BLOG_POSTS) ? window.BLOG_POSTS : [];
+
+    // Sort posts latest first using publishedDate ISO field (fallback to array order)
+    const rawPosts = Array.isArray(window.BLOG_POSTS) ? window.BLOG_POSTS : [];
+    const posts = rawPosts.slice().sort((a, b) => {
+        const da = a.publishedDate ? new Date(a.publishedDate) : new Date(0);
+        const db = b.publishedDate ? new Date(b.publishedDate) : new Date(0);
+        return db - da; // descending: newest first
+    });
 
     function byId(id) {
         return document.getElementById(id);
