@@ -9,7 +9,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,WONK@9..144,300..600,0..1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- OG / Social -->
+    <meta property="og:title" content="Kishore Pagidi — AI Product Manager">
+    <meta property="og:description" content="I coined Vibe CADing. I build AI into things that engineers use every day.">
+    <meta property="og:url" content="https://kishorepagidi.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kishore Pagidi — AI Product Manager">
+    <meta name="twitter:description" content="I coined Vibe CADing. I build AI into things that engineers use every day.">
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -21,84 +30,48 @@
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">KP</a>
+            <a href="#" class="nav-logo">Kishore Pagidi</a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Work</a></li>
-                <li><a href="#research" class="nav-link">Research</a></li>
                 <li><a href="#writing" class="nav-link">Writing</a></li>
-                <li><a href="#contact" class="nav-link nav-link--cta">Get in Touch</a></li>
+                <li><a href="#contact" class="nav-link nav-link--cta">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-background">
-            <div class="hero-gradient"></div>
-            <div class="hero-grid"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge animate-fade-up">
-                    <span class="badge-dot"></span>
-                    AI Product Manager at SOLIDWORKS
-                </div>
-                <p class="hero-name animate-fade-up" style="--delay: 0.05s">Kishore Reddy Pagidi</p>
-                <h1 class="hero-title animate-fade-up" style="--delay: 0.1s">
-                    Building the Future of<br>
-                    <span class="gradient-text">AI-Powered Design</span>
-                </h1>
-                <p class="hero-description animate-fade-up" style="--delay: 0.2s">
-                    I lead AI strategy and product innovation at SOLIDWORKS, transforming how millions of engineers
-                    create through conversational AI, automation, and intelligent workflows. Early advocate.
-                    Strategic thinker. Builder of what's next.
-                </p>
-                <div class="hero-cta animate-fade-up" style="--delay: 0.3s">
-                    <a href="#projects" class="btn btn-primary">
-                        View My Work
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">Let's Connect</a>
-                </div>
+        <div class="hero-inner">
+            <span class="hero-eyebrow animate-fade-up">AI Product Manager at SOLIDWORKS</span>
+            <h1 class="hero-name animate-fade-up" style="--delay: 0.05s">Kishore Pagidi</h1>
+            <p class="hero-tagline animate-fade-up" style="--delay: 0.15s">
+                I build <span class="typewriter-wrap"><span class="typewriter">AI products.</span></span>
+            </p>
+            <div class="hero-links animate-fade-up" style="--delay: 0.25s">
+                <a href="#projects" class="hero-link">
+                    Selected Work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                </a>
+                <a href="#writing" class="hero-link">
+                    Writing
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                </a>
             </div>
-            <div class="hero-visual animate-fade-up" style="--delay: 0.4s">
-                <div class="hero-card">
-                    <div class="hero-card-content">
-                        <div class="hero-stats">
-                            <div class="stat">
-                                <span class="stat-number">3.7M</span>
-                                <span class="stat-label">CAD Professionals Impacted</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number" data-count="200">0</span>
-                                <span class="stat-label">AI Projects Managed</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">Ongoing</span>
-                                <span class="stat-label">AI Advisory Board</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll to explore</span>
-            <div class="scroll-arrow"></div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about section" id="about">
-        <div class="container">
+        <div class="container--wide container">
             <div class="section-header">
                 <span class="section-label animate-fade-up">About</span>
                 <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
@@ -190,21 +163,17 @@
 
     <!-- Projects Section -->
     <section class="projects section" id="projects">
-        <div class="container">
+        <div class="container--wide container">
             <div class="section-header">
-                <span class="section-label animate-fade-up">Featured Work</span>
+                <span class="section-label animate-fade-up">Selected Work</span>
                 <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
-                    Projects That Define<br>the Future of Design
+                    Defining What AI<br>Means for Engineers
                 </h2>
-                <p class="section-description animate-fade-up" style="--delay: 0.2s">
-                    From trademarked concepts to enterprise solutions, each project represents
-                    a step toward reimagining how engineers interact with design tools.
-                </p>
             </div>
 
             <div class="projects-grid">
                 <!-- Project 1: Vibe CADing -->
-                <article class="project-card project-card--featured animate-fade-up" style="--delay: 0.1s">
+                <article class="project-tile project-tile--featured project-card animate-fade-up" data-index="01" style="--delay: 0.1s">
                     <div class="project-image">
                         <img src="images/assets-website/2.jpg" alt="Vibe CADing - AI-driven design experience" loading="lazy">
                         <div class="project-badge">Trademarked</div>
@@ -232,7 +201,7 @@
                 </article>
 
                 <!-- Project 2: AI Customer Advisory Board -->
-                <a href="http://solidworks.com/advisoryboard" class="project-card animate-fade-up" style="--delay: 0.2s" aria-label="Join the AI Customer Advisory Board">
+                <a href="http://solidworks.com/advisoryboard" class="project-tile project-card animate-fade-up" data-index="02" style="--delay: 0.2s" aria-label="Join the AI Customer Advisory Board">
                     <div class="project-image">
                         <img src="images/assets-website/3.jpg" alt="AI Customer Advisory Board" loading="lazy">
                     </div>
@@ -266,7 +235,7 @@
                 </a>
 
                 <!-- Project 3: Internal Automation Tools -->
-                <article class="project-card animate-fade-up" style="--delay: 0.3s">
+                <article class="project-tile project-card animate-fade-up" data-index="03" style="--delay: 0.3s">
                     <div class="project-image">
                         <img src="images/assets-website/4.jpg" alt="Internal Automation Tools" loading="lazy">
                     </div>
@@ -299,7 +268,7 @@
                 </article>
 
                 <!-- Project 4: AI Strategy & Encyclopedia -->
-                <article class="project-card animate-fade-up" style="--delay: 0.4s">
+                <article class="project-tile project-card animate-fade-up" data-index="04" style="--delay: 0.4s">
                     <div class="project-image">
                         <img src="images/assets-website/5.jpg" alt="AI Strategy & Encyclopedia" loading="lazy">
                     </div>
@@ -332,7 +301,7 @@
                 </article>
 
                 <!-- Project 5: UK Patents — Granted -->
-                <article class="project-card animate-fade-up" style="--delay: 0.5s">
+                <article class="project-tile project-card animate-fade-up" data-index="05" style="--delay: 0.5s">
                     <div class="project-image">
                         <img src="images/assets-website/6.jpg" alt="UK Patents — Granted" loading="lazy">
                         <div class="project-badge" style="background: #16a34a;">4 Granted</div>
@@ -359,7 +328,7 @@
                 </article>
 
                 <!-- Project 6: Educational Initiatives -->
-                <article class="project-card animate-fade-up" style="--delay: 0.6s">
+                <article class="project-tile project-card animate-fade-up" data-index="06" style="--delay: 0.6s">
                     <div class="project-image">
                         <img src="images/assets-website/7.jpg" alt="Educational Initiatives" loading="lazy">
                     </div>
@@ -396,7 +365,7 @@
 
     <!-- Impact Section -->
     <section class="impact section" id="impact">
-        <div class="container">
+        <div class="container--wide container">
             <div class="section-header section-header--center">
                 <span class="section-label animate-fade-up">Impact</span>
                 <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
@@ -446,7 +415,7 @@
 
     <!-- Research & Technical Projects Section -->
     <section class="research section" id="research">
-        <div class="container">
+        <div class="container--wide container">
             <div class="section-header">
                 <span class="section-label animate-fade-up">Research & Technical Work</span>
                 <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
@@ -587,7 +556,7 @@
 
     <!-- Writing Section -->
     <section class="writing section" id="writing">
-        <div class="container">
+        <div class="container--wide container">
             <div class="section-header">
                 <span class="section-label animate-fade-up">Writing & Speaking</span>
                 <h2 class="section-title animate-fade-up" style="--delay: 0.1s">
@@ -836,7 +805,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="footer-logo">KP</span>
-                    <p class="footer-tagline">Building the future of AI-powered design</p>
+                    <p class="footer-tagline">Building the future of AI-powered design, one Vibe CADing session at a time.</p>
                 </div>
                 <div class="footer-links">
                     <a href="#about">About</a>
