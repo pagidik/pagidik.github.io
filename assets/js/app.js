@@ -240,30 +240,49 @@
     // =========================================================================
 
     function initTypingEffect() {
-        const gradientText = document.querySelector('.gradient-text');
-        if (!gradientText) return;
+        const el = document.querySelector('.typewriter');
+        if (!el) return;
 
-        // Store original text
-        const originalText = gradientText.textContent;
-        gradientText.textContent = '';
-        gradientText.style.borderRight = '2px solid var(--color-primary)';
+        const phrases = ['AI products.', 'Vibe CADing.™', 'the future.'];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
+        let pausing = false;
 
-        let i = 0;
-        function type() {
-            if (i < originalText.length) {
-                gradientText.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(type, 50);
+        // Cursor blink
+        let cursorVisible = true;
+        setInterval(function() {
+            cursorVisible = !cursorVisible;
+            el.style.borderRightColor = cursorVisible ? '' : 'transparent';
+        }, 500);
+
+        function tick() {
+            if (pausing) return;
+            var phrase = phrases[phraseIdx];
+
+            if (!deleting) {
+                charIdx++;
+                el.textContent = phrase.slice(0, charIdx);
+                if (charIdx === phrase.length) {
+                    pausing = true;
+                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 1400);
+                    return;
+                }
+                setTimeout(tick, 55);
             } else {
-                // Remove cursor after typing completes
-                setTimeout(() => {
-                    gradientText.style.borderRight = 'none';
-                }, 500);
+                charIdx--;
+                el.textContent = phrase.slice(0, charIdx);
+                if (charIdx === 0) {
+                    deleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                    setTimeout(tick, 280);
+                    return;
+                }
+                setTimeout(tick, 28);
             }
         }
 
-        // Start typing after a delay
-        setTimeout(type, 800);
+        setTimeout(tick, 700);
     }
 
     // =========================================================================
@@ -307,16 +326,13 @@
         initActiveNavHighlight();
         initProjectCardEffects();
         initHeroParallax();
+        initTypingEffect();
         initKeyboardNav();
 
         // Hide loading state
         hideLoading();
 
-        // Trigger initial animations for elements in view
-        setTimeout(() => {
-            const heroElements = document.querySelectorAll('.hero .animate-fade-up');
-            heroElements.forEach(el => el.classList.add('visible'));
-        }, 100);
+        // Hero uses CSS keyframe animations — no JS patch needed
     }
 
     // Run on DOM ready
