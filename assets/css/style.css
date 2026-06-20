@@ -345,6 +345,7 @@ h3, h4 {
   margin-bottom: 0.6rem;
   animation: heroIn 0.5s var(--ease) 0.14s both;
 }
+.hero-tagline-accent { color: var(--accent); }
 
 .hero-sub {
   font-size: 1rem;
@@ -1159,6 +1160,47 @@ a.writing-card:hover,
   font-size: 0.75rem;
   color: rgba(255,255,255,0.25);
   letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   SPEAKING
+   ============================================================ */
+.speaking { background: var(--bg); border-top: 1px solid var(--border); }
+.speaking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.speaking-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  transition: border-color var(--t-fast) ease;
+}
+.speaking-card:hover { border-color: rgba(232, 69, 10, 0.4); }
+.speaking-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+.speaking-body { display: flex; flex-direction: column; gap: 0.4rem; }
+.speaking-type {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.speaking-title { font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--ink); letter-spacing: -0.02em; }
+.speaking-desc { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.55; }
+.speaking-meta { display: flex; gap: 1rem; margin-top: 0.5rem; }
+.speaking-meta span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.08em; }
+
+@media (max-width: 768px) {
+  .speaking-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================

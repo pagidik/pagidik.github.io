@@ -236,62 +236,6 @@
     }
 
     // =========================================================================
-    // TYPING EFFECT (Optional - for hero title)
-    // =========================================================================
-
-    function initTypingEffect() {
-        const el = document.querySelector('.typewriter');
-        if (!el) return;
-
-        const phrases = [
-            'mechanical engineers.',
-            'people who make things.',
-            'CAD.',
-            'how products get designed.',
-            'the tools engineers rely on.'
-        ];
-        let phraseIdx = 0;
-        let charIdx = 0;
-        let deleting = false;
-        let pausing = false;
-
-        // Cursor blink
-        let cursorVisible = true;
-        setInterval(function() {
-            cursorVisible = !cursorVisible;
-            el.style.borderRightColor = cursorVisible ? '' : 'transparent';
-        }, 500);
-
-        function tick() {
-            if (pausing) return;
-            var phrase = phrases[phraseIdx];
-
-            if (!deleting) {
-                charIdx++;
-                el.textContent = phrase.slice(0, charIdx);
-                if (charIdx === phrase.length) {
-                    pausing = true;
-                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 2000);
-                    return;
-                }
-                setTimeout(tick, 45);
-            } else {
-                charIdx--;
-                el.textContent = phrase.slice(0, charIdx);
-                if (charIdx === 0) {
-                    deleting = false;
-                    phraseIdx = (phraseIdx + 1) % phrases.length;
-                    setTimeout(tick, 300);
-                    return;
-                }
-                setTimeout(tick, 22);
-            }
-        }
-
-        setTimeout(tick, 700);
-    }
-
-    // =========================================================================
     // LOADING STATE
     // =========================================================================
 
@@ -317,6 +261,22 @@
     }
 
     // =========================================================================
+    // RAIL CYCLE
+    // =========================================================================
+
+    function initRailCycle() {
+        var items = document.querySelectorAll('.hero-rail-item');
+        if (!items.length) return;
+        var idx = 0;
+        setInterval(function() {
+            items.forEach(function(item, i) {
+                item.classList.toggle('active', i === idx);
+            });
+            idx = (idx + 1) % items.length;
+        }, 3000);
+    }
+
+    // =========================================================================
     // INITIALIZE
     // =========================================================================
 
@@ -332,7 +292,7 @@
         initActiveNavHighlight();
         initProjectCardEffects();
         initHeroParallax();
-        initTypingEffect();
+        initRailCycle();
         initKeyboardNav();
 
         // Hide loading state
