@@ -244,11 +244,11 @@
         if (!el) return;
 
         const phrases = [
-            'the physical world.',
-            'world models.',
-            'physical AI.',
-            'agentic design.',
-            'engineers.'
+            'mechanical engineers.',
+            'people who make things.',
+            'CAD.',
+            'how products get designed.',
+            'the tools engineers rely on.'
         ];
         let phraseIdx = 0;
         let charIdx = 0;
