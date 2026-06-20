@@ -269,11 +269,10 @@
         if (!el) return;
 
         const phrases = [
-            'mechanical engineers.',
-            'people who make things.',
-            'CAD.',
-            'how products get designed.',
-            'the tools engineers rely on.'
+            'physical AI, not demos.',
+            'products, not prototypes.',
+            'geometry, not text.',
+            'engineers, not researchers.'
         ];
         let phraseIdx = 0;
         let charIdx = 0;
@@ -294,7 +293,7 @@
                 el.textContent = phrase.slice(0, charIdx);
                 if (charIdx === phrase.length) {
                     pausing = true;
-                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 2000);
+                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 1200);
                     return;
                 }
                 setTimeout(tick, 45);
@@ -326,7 +325,7 @@
                 item.classList.toggle('active', i === idx);
             });
             idx = (idx + 1) % items.length;
-        }, 3000);
+        }, 2000);
     }
 
     // =========================================================================
