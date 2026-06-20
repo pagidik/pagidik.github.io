@@ -1165,18 +1165,19 @@ a.writing-card:hover,
 /* ============================================================
    SPEAKING
    ============================================================ */
-.speaking { background: var(--bg); border-top: 1px solid var(--border); }
-.speaking-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.speaking { background: var(--bg-alt); border-top: 1px solid var(--border); }
+.speaking-grid { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; }
 .speaking-card {
   display: flex;
-  gap: 1.25rem;
-  padding: 1.75rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--white);
-  transition: border-color var(--t-fast) ease;
+  gap: 2rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  transition: color var(--t-fast) ease;
+  align-items: flex-start;
 }
-.speaking-card:hover { border-color: rgba(232, 69, 10, 0.4); }
+.speaking-card:first-child { border-top: 1px solid var(--border); }
+.speaking-card:hover .speaking-title { color: var(--accent); }
 .speaking-num {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1184,9 +1185,10 @@ a.writing-card:hover,
   color: var(--accent);
   letter-spacing: 0.1em;
   flex-shrink: 0;
-  padding-top: 0.15rem;
+  width: 2rem;
+  padding-top: 0.2rem;
 }
-.speaking-body { display: flex; flex-direction: column; gap: 0.4rem; }
+.speaking-body { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
 .speaking-type {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -1194,14 +1196,10 @@ a.writing-card:hover,
   text-transform: uppercase;
   color: var(--ink-faint);
 }
-.speaking-title { font-family: var(--font-body); font-weight: 600; font-size: 1rem; color: var(--ink); letter-spacing: -0.02em; }
-.speaking-desc { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.55; }
-.speaking-meta { display: flex; gap: 1rem; margin-top: 0.5rem; }
+.speaking-title { font-family: var(--font-body); font-weight: 600; font-size: 1.0625rem; color: var(--ink); letter-spacing: -0.02em; transition: color var(--t-fast) ease; }
+.speaking-desc { font-size: 0.875rem; color: var(--ink-muted); line-height: 1.55; max-width: 60ch; }
+.speaking-meta { display: flex; gap: 1.5rem; margin-top: 0.35rem; }
 .speaking-meta span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-faint); letter-spacing: 0.08em; }
-
-@media (max-width: 768px) {
-  .speaking-grid { grid-template-columns: 1fr; }
-}
 
 /* ============================================================
    REDUCED MOTION
