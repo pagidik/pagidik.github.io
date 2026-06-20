@@ -243,11 +243,22 @@
         const el = document.querySelector('.typewriter');
         if (!el) return;
 
-        const phrases = ['AI products.', 'Vibe CADing.™', 'the future.'];
+        const phrases = [
+            'parametric parts.',
+            'CAD model edits.',
+            'engineering drawings.',
+            'design validation.'
+        ];
         let phraseIdx = 0;
         let charIdx = 0;
         let deleting = false;
         let pausing = false;
+
+        function syncPanel(idx) {
+            document.querySelectorAll('.hero-rail-item').forEach(function(item, i) {
+                item.classList.toggle('active', i === idx);
+            });
+        }
 
         // Cursor blink
         let cursorVisible = true;
@@ -265,23 +276,25 @@
                 el.textContent = phrase.slice(0, charIdx);
                 if (charIdx === phrase.length) {
                     pausing = true;
-                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 1400);
+                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 1800);
                     return;
                 }
-                setTimeout(tick, 55);
+                setTimeout(tick, 45);
             } else {
                 charIdx--;
                 el.textContent = phrase.slice(0, charIdx);
                 if (charIdx === 0) {
                     deleting = false;
                     phraseIdx = (phraseIdx + 1) % phrases.length;
-                    setTimeout(tick, 280);
+                    syncPanel(phraseIdx);
+                    setTimeout(tick, 300);
                     return;
                 }
-                setTimeout(tick, 28);
+                setTimeout(tick, 22);
             }
         }
 
+        syncPanel(0);
         setTimeout(tick, 700);
     }
 
