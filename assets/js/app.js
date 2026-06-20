@@ -244,21 +244,16 @@
         if (!el) return;
 
         const phrases = [
-            'parametric parts.',
-            'CAD model edits.',
-            'engineering drawings.',
-            'design validation.'
+            'the physical world.',
+            'world models.',
+            'physical AI.',
+            'agentic design.',
+            'engineers.'
         ];
         let phraseIdx = 0;
         let charIdx = 0;
         let deleting = false;
         let pausing = false;
-
-        function syncPanel(idx) {
-            document.querySelectorAll('.hero-rail-item').forEach(function(item, i) {
-                item.classList.toggle('active', i === idx);
-            });
-        }
 
         // Cursor blink
         let cursorVisible = true;
@@ -276,7 +271,7 @@
                 el.textContent = phrase.slice(0, charIdx);
                 if (charIdx === phrase.length) {
                     pausing = true;
-                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 1800);
+                    setTimeout(function() { pausing = false; deleting = true; tick(); }, 2000);
                     return;
                 }
                 setTimeout(tick, 45);
@@ -286,7 +281,6 @@
                 if (charIdx === 0) {
                     deleting = false;
                     phraseIdx = (phraseIdx + 1) % phrases.length;
-                    syncPanel(phraseIdx);
                     setTimeout(tick, 300);
                     return;
                 }
@@ -294,7 +288,6 @@
             }
         }
 
-        syncPanel(0);
         setTimeout(tick, 700);
     }
 
