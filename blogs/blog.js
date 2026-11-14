@@ -20,6 +20,22 @@
         return text ? text : fallback;
     }
 
+    // Metadata is plain text. Only post.content is trusted, repository-authored HTML.
+    function escapeHtml(value) {
+        return String(value == null ? '' : value).replace(/[&<>"']/g, (character) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[character]);
+    }
+
+    function safeSourceUrl(value) {
+        try {
+            const url = new URL(value);
+            return url.protocol === 'https:' && !url.username && !url.password ? url.href : '#';
+        } catch (error) {
+            return '#';
+        }
+    }
+
     function applyTheme(theme, persist = true) {
         const resolvedTheme = VALID_THEMES.has(theme) ? theme : 'dark';
         document.body.dataset.theme = resolvedTheme;
@@ -107,18 +123,18 @@
 
         return `
             <li>
-                <a href="${readingHref}">
-                    <span class="toc-chapter-num">Article ${String(index + 1).padStart(2, '0')} - ${post.source}</span>
-                    <span class="toc-chapter-title">${post.title}</span>
-                    <span class="toc-chapter-desc">${post.excerpt}</span>
+                <a href="${escapeHtml(readingHref)}">
+                    <span class="toc-chapter-num">Article ${String(index + 1).padStart(2, '0')} - ${escapeHtml(post.source)}</span>
+                    <span class="toc-chapter-title">${escapeHtml(post.title)}</span>
+                    <span class="toc-chapter-desc">${escapeHtml(post.excerpt)}</span>
                     <span class="toc-row-meta">
-                        <span>${post.published}</span>
-                        <span>${post.readTime}</span>
+                        <span>${escapeHtml(post.published)}</span>
+                        <span>${escapeHtml(post.readTime)}</span>
                     </span>
                 </a>
                 ${withOriginalLink ? `
                     <div class="toc-action-row">
-                        <a href="${post.sourceUrl}" target="_blank" rel="noopener noreferrer">Open original source</a>
+                        <a href="${escapeHtml(safeSourceUrl(post.sourceUrl))}" target="_blank" rel="noopener noreferrer">Open original source</a>
                     </div>
                 ` : ''}
             </li>
@@ -146,7 +162,11 @@
         const segments = afterBlogs.split('/').filter(Boolean);
 
         if (segments.length === 1) {
-            return decodeURIComponent(segments[0]);
+            try {
+                return decodeURIComponent(segments[0]);
+            } catch (error) {
+                return null;
+            }
         }
 
         return null;
@@ -244,7 +264,7 @@
         }
 
         if (sourceLink) {
-            sourceLink.setAttribute('href', post.sourceUrl);
+            sourceLink.setAttribute('href', safeSourceUrl(post.sourceUrl));
         }
 
         postContent.innerHTML = post.content;

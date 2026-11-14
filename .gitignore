@@ -18,3 +18,7 @@ Thumbs.db
 # Temp files
 *.tmp
 *.bak
+
+# Python check-script cache
+__pycache__/
+*.pyc
