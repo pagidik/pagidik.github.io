@@ -267,6 +267,10 @@
     function initTypingEffect() {
         const el = document.querySelector('.typewriter');
         if (!el) return;
+        // The HTML provides a complete headline for no-JS and reduced-motion readers.
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
 
         const phrases = [
             'physical AI, not demos.',

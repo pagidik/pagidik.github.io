@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog-assets.solidworks.com https://datawrapper.dwcdn.net; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGO LOAM vs SC-LEGO LOAM | Kishore Reddy Pagidi</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%236366f1' width='32' height='32' rx='6'/%3E%3Ctext x='16' y='22' fill='white' font-family='Georgia,serif' font-size='16' font-weight='bold' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
@@ -67,13 +69,13 @@
 
                 <div class="image-grid cols-2">
                     <figure>
-                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank" rel="noopener noreferrer">
                             <img src="images/legoloam/demo32x.gif" alt="LEGO LOAM Demo">
                         </a>
                         <figcaption>LiDAR point cloud mapping visualization</figcaption>
                     </figure>
                     <figure>
-                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                        <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank" rel="noopener noreferrer">
                             <img src="images/legoloam/cam0_32x.gif" alt="Camera View">
                         </a>
                         <figcaption>Corresponding camera view during data collection</figcaption>
@@ -84,7 +86,7 @@
                 <p>To collect the data, we used NUANCE to navigate through a variety of environments, including urban areas and buildings. We equipped the car with laser rangefinders, cameras, and inertial measurement units (IMUs), which allowed it to scan its surroundings and collect data on the distances to nearby objects.</p>
 
                 <figure>
-                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank" rel="noopener noreferrer">
                         <img src="images/legoloam/nuance.jpg" alt="NUANCE Autonomous Vehicle">
                     </a>
                     <figcaption>NUANCE - Northeastern University's autonomous vehicle used for data collection</figcaption>
@@ -94,7 +96,7 @@
                 <p>After we collected the data, I used ICP (Iterative Closest Point) to generate 3D maps. ICP is an algorithm that is often used in the LEGO LOAM method for creating 3D maps of environments. The algorithm is used to align two point clouds, which are sets of points in 3D space that represent the shape of an environment.</p>
 
                 <figure>
-                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank" rel="noopener noreferrer">
                         <img src="images/legoloam/odometry.jpg" alt="Odometry Visualization">
                     </a>
                     <figcaption>Odometry estimation using ICP alignment</figcaption>
@@ -108,7 +110,7 @@
                 <p>One of the reasons that SC LEGO LOAM was more effective is that it was able to take advantage of multiple small loop closures. Loop closures occur when the ego vehicle returns to a location it has previously visited, and they are used to improve the accuracy of the 3D map. By performing multiple small loop closures, we were able to significantly improve the quality of the 3D maps created using SC LEGO LOAM.</p>
 
                 <figure>
-                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank">
+                    <a href="https://github.com/pagidik/Lidar-Mapping-using-LeGO-LOAM-and-SC-LeGO-LOAM" target="_blank" rel="noopener noreferrer">
                         <img src="images/legoloam/seg-total.jpg" alt="Segmented Point Cloud">
                     </a>
                     <figcaption>Complete segmented point cloud map generated using SC-LEGO LOAM</figcaption>

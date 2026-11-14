@@ -8,6 +8,8 @@
 	<head>
 		<title>Kishore's Portfolio</title>
 		<meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-lRxlTcZrdh+NmMVAdi0N2lg/yY8joT51ic3jwDckh5Q=' https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://blog-assets.solidworks.com https://datawrapper.dwcdn.net; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                <link rel="stylesheet" href="assets/css/main.css" />
                <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,12 +75,12 @@
 							<li class="active"><a href="index.html">About</a></li>
 							<li><a href="projects.html">Projects</a></li>
                             <li><a href="blog/index.html">Blog</a></li>
-							<li><a href="/assets/Kishore_Resume.pdf" target="_blank">Resume</a></li>
+							<li><a href="/assets/Kishore_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
 
 						</ul>
 						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
 						</ul>
 					</nav>
 					<!-- Main -->
@@ -118,8 +120,8 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/kishore005/" class="icon brands fa-linkedin" target="_blank" rel="noopener noreferrer"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/pagidik" class="icon brands fa-github" target="_blank" rel="noopener noreferrer"><span class="label">GitHub</span></a></li>
 						</ul>
 
 					</footer>
@@ -134,7 +136,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
         <script>
             const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
